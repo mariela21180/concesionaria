@@ -1,0 +1,15 @@
+{
+  "name": "listado_palabras",
+  "version": "1.0.0",
+  "description": "Definir funciones (con todos los tipos necesarios) para hacer lo siguiente Cargar/Insertar/eliminar/buscar/actualizar una palabra del listado",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prueba": "tsc listado_palabras.ts && node listado_palabras.js"
+  },
+  "author": "Mariela Gonzalez",
+  "license": "ISC",
+  "dependencies": {
+    "readline-sync": "^1.4.9"
+  }
+}
