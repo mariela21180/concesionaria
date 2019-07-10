@@ -1,5 +1,5 @@
 {
-  "name": "3_manejo_archivo_texto",
+  "name": "cargar_arreglo_de_archivo_texto",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
