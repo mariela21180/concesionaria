@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "tarea1": "node js/saludar.js",
-    "tarea2": "node js/preguntar.js",
-    "tarea3": "http-server ./ -o http://localhost:8080/index.html"
+    "saludar": "tsc ./js/saludar.ts && node ./js/saludar.js",
+    "preguntar": "node js/preguntar.js",
+    "chart": "http-server ./ -o http://localhost:8080/index.html"
   },
   "author": "",
   "license": "ISC",
