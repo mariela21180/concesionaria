@@ -1,0 +1,19 @@
+{
+  "name": "proyecto-prueba",
+  "version": "1.0.0",
+  "description": "algo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "saludar": "tsc ./js/saludar.ts && node ./js/saludar.js",
+    "preguntar": "node js/preguntar.js",
+    "chart": "http-server ./ -o http://localhost:8080/index.html"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chart.js": "^2.8.0",
+    "http-server": "^0.11.1",
+    "readline-sync": "^1.4.9"
+  }
+}

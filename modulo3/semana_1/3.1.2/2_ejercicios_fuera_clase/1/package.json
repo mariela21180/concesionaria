@@ -1,0 +1,17 @@
+{
+  "name": "cargar_arreglo_de_archivo_texto",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prueba": "tsc ejemplo-txt.ts && node ejemplo-txt.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^12.6.2"
+  }
+}
