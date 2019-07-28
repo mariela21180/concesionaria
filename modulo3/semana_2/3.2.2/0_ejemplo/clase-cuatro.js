@@ -12,6 +12,9 @@ var Auto = /** @class */ (function () {
     Auto.prototype.acelerar = function () {
         this.velocidad += 10;
     };
+    Auto.prototype.getVelocidad = function () {
+        return this.velocidad;
+    };
     return Auto;
 }());
 var miAuto = new Auto("Fiat");
