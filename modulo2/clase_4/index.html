@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Javascript</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 mt-4">
+                <h1>Javascript Web</h1>
+            </div>
+            <div class="col-8">
+                <input id="in-nombre" type="text" class="form-control" placeholder="Ingrese su nombre aqui...">
+            </div>
+            <div class="col-4 text-center">
+                <button class="btn btn-primary btn-block" onclick="saludarConNombre();">
+                    Enviar
+                </button>
+            </div>
+            <div class="col-12">
+                <p id="saludo" class="mt-2">Complete su nombre para continuar y haga click en "Enviar"</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 mt-4">
+                <h2>Ejercicio 1: Contadores con Click</h2>
+                <p>En su página web, agregar un campo para llevar un contador de X elemento que siempre arranque en 0</p>
+                <ul>
+                    <li>En la página web se muestra la cantidad de X</li>
+                    <li>Hay un botón para incrementar la cantidad</li>
+                    <li>Hay un botón para decrementar la cantidad</li>
+                    <li>Hay una caja de texto para sumar muchos elementos X en una sola acción</li>
+                </ul>
+            </div>
+            <div class="col-3 col-sm-6 mb-2">
+                <button class="btn btn-primary btn-block" onclick="sumarUno();">
+                    Sumar 1
+                </button>
+            </div>
+            <div class="col-3 col-sm-6 mb-2">
+                <button class="btn btn-primary btn-block" onclick="restarUno();">
+                    Restar 1
+                </button>
+            </div>
+            <div class="col-3 col-sm-6 mb-2">
+                <input id="in-cantidad" type="text" class="form-control" placeholder="Ingrese cantidad..."
+                    oninput="actualizarCantidad();">
+            </div>
+            <div class="col-3 col-sm-6 mb-2">
+                <button class="btn btn-primary btn-block" onclick="sumarCantidad();">
+                    Sumar <span id="cantidad"></span>
+                </button>
+            </div>
+            <div class="col-12 text-center">
+                <h4 class="mt-2">Resultado: <span id="resultado"></span></h4>
+            </div>
+        </div>
+        <div class="row mb-5">
+            <div class="col-12 mt-4">
+                <h2>Ejercicio 2: Simular Dados</h2>
+                <p>Hacer una aplicación web que al apretar un botón simule el lanzamiento de dos dados 1000 veces, sumarlos y muestre en el HTML la cantidad de veces que salió 7.</p>
+            </div>
+            <div class="col-12 text-center mb-2">
+                <button class="btn btn-primary btn-block" onclick="simularDados();">
+                    Tirar Dados
+                </button>
+            </div>
+            <div class="col-12 text-center">
+                <h4 id="total-siete" class="mt-2"></h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 mt-4">
+                <h2>Ejercicio 3: Formulario de Compras</h2>
+                <p>Dar un form para cargar compras del cliente y un sumar que nos diga el total (dos botones, un agregar y otro calcular, arreglo global)</p>
+            </div>
+            <div class="col-6 mb-2">
+                <input id="in-compra" type="text" class="form-control" placeholder="Ingrese compra...">
+            </div>
+            <div class="col-2 mb-2">
+                <input id="in-monto" type="text" class="form-control" placeholder="Monto">
+            </div>
+            <div class="col-4 mb-2">
+                <button class="btn btn-primary btn-block" onclick="agregar();">
+                    Agregar
+                </button>
+            </div>
+            <div class="col-12 mb-2">
+                <div class="border p-2">
+                    <p><b>Lista:</b></p>
+                    <ul id="lista-compras"></ul>
+                
+                </div>
+            </div>
+            <div class="col-12 mb-2">
+                <button class="btn btn-primary btn-block" onclick="mostrarTotal();">
+                    Calcular Total
+                </button>
+            </div>
+            <div class="col-12 mb-2">
+                <p class="border p-2"><b>Total: <span id="total" class="float-right pl-2"></span><span class="float-right">$</span></b></p>
+            </div>
+        </div>        
+    </div>
+    <script src="js/jquery-3.3.1.slim.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>

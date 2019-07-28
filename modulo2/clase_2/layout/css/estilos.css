@@ -1,0 +1,90 @@
+div {
+    border-radius: 10px; 
+    margin: 0;
+    padding: 5px 15px;
+    border: 1px solid #CCCCCC;
+    width: auto;
+    float: left;
+}
+.menu1 {
+    float: right;
+    background: greenyellow;
+    clear: both;
+}
+.encabezado {
+    height: 50px;
+    text-align: left;
+    background-color: #CCCCCC;
+    clear: both;
+    float: none;
+}
+
+.cuerpo {
+    background-color: #666666;
+    color: white;
+    height: auto;
+}
+
+.pie {
+    background-color: #00CCFF;
+    height: 50px;
+    display: block;
+    clear: both;
+}
+
+.full {
+    display: block;
+    width: 100%;
+}
+
+.encabezado {
+    background-color: rgba(0, 0, 0, 0.25);
+}
+
+.izquierda {
+    width: 25%;
+    background-color: #333333;
+    color: white;
+    height: 50px;
+}
+
+.derecha {
+    width: 25%;
+    background-color: #666666;
+    color: white;
+    height: 50px;
+}
+.centro {
+    width: 25%;
+    background-color: #666666;
+    color: white;
+    height: 50px;
+}
+
+
+.box-model {
+    width: 600px;
+    height: 250px;
+    margin: 50px;
+    padding: 20px;
+    border: 4px;
+    border-style: solid;
+    border-color: pink;
+
+    background-color: lightblue;
+}
+
+.box-model-irregular {
+    width: 600px;
+    height: 250px;
+    margin-left: 20px;
+    padding-top: 5px;
+    padding-bottom: 20px;
+    padding-left: 100px;
+    padding-right: 0;
+    border: 4px;
+    border-style: solid;
+    border-color: pink;
+
+    background-color: lightblue;
+}

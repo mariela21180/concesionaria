@@ -1,0 +1,30 @@
+body {
+    background-color: #eaeaea;
+}
+
+h1, h2 {
+    color: red;
+}
+
+p {
+    font-weight: bold;
+}
+
+.imagenes {
+    display: inline-flex;
+}
+.imagenes img {
+    width: 50%;
+    display: inline-block;
+    height: -webkit-fill-available;
+}
+
+.imagen-centrada {
+    width: 500px;
+    margin: auto;
+    text-align: center;
+}
+.imagen-centrada img {
+    width: 300px;
+    margin: auto;
+}

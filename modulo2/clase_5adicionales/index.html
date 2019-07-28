@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Javascript - Ejercicios Adicionales</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 mt-4">
+                <h1>Javascript Web - Ejercicios Adicionales</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 mt-4">
+                <h2>Adicionales 1</h2>
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 mt-5">
+                <h3>Ejercicio 1</h3>
+                <p>Muestre un mensaje de alerta al presionar un botón si el valor introducido en un campo de texto es negativo y en otro positivo.</p>
+                <p>¿Cómo cambiaría si la condición fuera que alguno de los dos fuera positivo?</p>
+            </div>
+            <div class="col-6 mb-2">
+                <input id="in-campo1" type="number" class="form-control" placeholder="Ingrese numero...">
+                <p class="d-none text-danger">Debe ingresar un numero</p>
+            </div>
+            <div class="col-6 mb-2">
+                <input id="in-campo2" type="number" class="form-control" placeholder="Ingrese numero...">
+                <p class="d-none text-danger">Debe ingresar un numero</p>
+            </div>
+            <div id="validar-campos" class="d-none col-12">
+                <p class="text-danger text-center">
+                    Debe completar ambos campos para continuar
+                </p>
+            </div>
+            <div class="col-6 text-left mb-1">
+                <button id="btn-ambos" class="btn btn-primary btn-block">
+                    Ver si Uno es Negativo y otro positivo
+                </button>
+            </div>
+            <div class="col-6 text-left mb-1">
+                <button id="btn-almenosuno" class="btn btn-primary btn-block">
+                    Ver si alguno es positivo
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 mt-5">
+                <h3>Ejercicio 2</h3>
+                <p>Genere una cadena con los números del 1 al 100 (usando ciclos), y agreguelos mediante Javascript al cuerpo de la página al presionar un botón.</p>
+            </div>
+            <div class="col-12">
+                <button id="btn-numeros" class="btn btn-primary btn-block mb-2">
+                    Agregar cadena de números
+                </button>
+                <p></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 mt-5">
+                <h3>Ejercicio 3</h3>
+                <p>Hacer una pagina que al presionar un botón cree un div con posición, tamaño y color aleatorio.</p>
+            </div>
+            <div class="col-12">
+                <button id="btn-printdiv" class="btn btn-primary btn-block mb-2">
+                    Generar Div Aleatorio
+                </button>
+                <p></p>
+            </div>
+            <div id="div-to-print"></div>
+        </div>
+        <div class="row">
+            <div class="col-12 mt-5">
+                <h3>Ejercicio 4</h3>
+                <p>Cree una página con un formulario para que los usuarios puedan agregar Nombre, Apellido, Mail y Consulta. Al hacer clic en el botón “Enviar” se deberá ejecutar un script que controle que:</p>
+                <ol>
+                    <li>El nombre no sea vacío y tenga entre 3 y 20 caracteres</li>
+                    <li>El apellido tiene las mismas restricciones que el Nombre</li>
+                    <li>El mail tiene que ser un mail válido [Números-Letras]@[números-letras].com.[Letras]</li>
+                    <li>La consulta no puede ser vacía.</li>
+                </ol>
+            </div>
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-6">
+                        <input id="name" type="text" class="form-control mb-2" placeholder="Ingrese su nombre">
+                    </div>
+                    <div class="col-6">
+                        <input id="lastname" type="text" class="form-control mb-2" placeholder="Ingrese su apellido">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <input id="email" type="text" class="form-control mb-2" placeholder="Ingrese su email">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <textarea id="message" class="form-control mb-2" placeholder="Ingrese su consulta"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <p id="result" class="mb-4 text-center"></p>
+                        <button id="btn-submit" class="btn btn-primary btn-block mb-4">
+                            Enviar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 mt-4">
+                <h2>Adicionales 2</h2>
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 mt-5">
+                <h3>Ejercicio 1</h3>
+                <p>Cree una página que tenga un text box, un label y un botón. Al hacer clic en el botón se deberá ejecutar una función javascript que, tomando lo ingresado en el text box, invierta las letras y lo imprima en la consola. Ejemplo:</p>
+                <p>Text box: Hola Mundo! - console.log: !odnuM aloH</p>
+            </div>
+            <div class="col-12 form-group">
+                <label for="texto-derecho">Texto</label>
+                <input id="texto-derecho" type="text" class="form-control mb-2" placeholder="Ingrese un texto">
+                <p class="text-center text-danger"></p>
+            </div>
+            <div class="col-12">
+                <button id="btn-invertir-texto" class="btn btn-primary btn-block mb-4">
+                    Enviar
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 mt-5">
+                <h3>Ejercicio 2</h3>
+                <p>Implemente una botonera en forma de botones anidados (al estilo de las carpetas y subcarpetas). Cada elemento será una categoría.</p>
+                <ol>
+                    <li>Las categorías se despliegan al hacer click sobre ellas y se ocultan al volver a hacer click.</li>
+                    <li>Cambiar el ocultado, para que sea automático al hacer click en alguna otra categoría.</li>
+                    <li>Cambiar el ocultado, para que ocurra al hacer click en cualquier lugar del sitio fuera de ella.</li>
+                </ol>
+            </div>
+            <div class="col-12">
+                <ul id="botonera">
+                    <li>
+                        <button class="btn btn-primary btn-block">Categoria 1</button>
+                        <ul class="d-none">
+                            <li>
+                                <button class="btn btn-secondary btn-block">Subcategoria 1.1</button>
+                            </li>
+                            <li>
+                                <button class="btn btn-secondary btn-block">Subcategoria 1.2</button>
+                            </li>
+                            <li>
+                                <button class="btn btn-secondary btn-block">Subcategoria 1.3</button>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <button class="btn btn-primary btn-block">Categoria 2</button>
+                        <ul class="d-none">
+                            <li>
+                                <button class="btn btn-secondary btn-block">Subcategoria 2.1</button>
+                            </li>
+                            <li>
+                                <button class="btn btn-secondary btn-block">Subcategoria 2.2</button>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <button class="btn btn-primary btn-block">Categoria 3</button>
+                        <ul class="d-none">
+                            <li>
+                                <button class="btn btn-secondary btn-block">Subcategoria 3.1</button>
+                            </li>
+                            <li>
+                                <button class="btn btn-secondary btn-block">Subcategoria 3.2</button>
+                            </li>
+                            <li>
+                                <button class="btn btn-secondary btn-block">Subcategoria 3.3</button>
+                            </li>
+                            <li>
+                                <button class="btn btn-secondary btn-block">Subcategoria 3.4</button>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 mt-5">
+                <h3>Ejercicio 3</h3>
+                <p>Verifique si el valor introducido en un campo de texto puede leerse como una fecha. Las fechas pueden venir en diferente formato.</p>
+                <ol>
+                    <li>Los días y meses pueden venir en formato de una o dos cifras, y el año en dos o cuatro cifras. Ejemplos: DD-MM-AA, DD-MM, DD-MM-AAAA, D-MM, DD-M, DD-M-AA.</li>
+                    <li>¿Qué pasa si el separador de campos puede ser también la / pero no mezclarse? Ejemplo: 20-04-2008 y 20/04/2008 es válido, pero 20-04/2008 no. Use expresiones regulares.</li>
+                </ol>
+            </div>
+            <div class="col-12 form-group">
+                <label for="texto-fecha">Fecha</label>
+                <input id="texto-fecha" type="text" class="form-control mb-2" placeholder="Ingrese una fecha">
+                <p class="text-center"></p>
+            </div>
+            <div class="col-12">
+                <button id="btn-validar-fecha" class="btn btn-primary btn-block mb-4">
+                    Validar
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 mt-5">
+                <h3>Ejercicio 4</h3>
+                <p>Hacer un Div que se mueva dentro de la página “rebotando” entre dos posiciones.</p>
+            </div>
+            <div class="mb-5 div-container border">
+                <div id="bouncing"></div>
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery-3.3.1.slim.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>

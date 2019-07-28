@@ -1,0 +1,9 @@
+.col-12 .ver {
+  visibility: visible;
+  color: white;
+  background-color: blue;
+}
+
+.col-12 div {
+  visibility: hidden;
+}

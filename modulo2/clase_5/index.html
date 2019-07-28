@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Javascript 2</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 mt-4">
+                <h1>Javascript Web - Parte II</h1>
+            </div>
+            <div class="col-12 mt-5">
+                <h2>Ejercicio Teoria: Botón “Ver Más” y Ejercicio 1 y 2</h2>
+                <p>Crear un botón “Ver Más”, que muestre/oculte el contenido de un div.</p>
+                <p>El botón debe poder reutilizarse y funcionar de manera independiente del resto de los botones de la página.</p>
+            </div>
+            <div class="col-12 text-left mb-1">
+                <button class="btn-mostrar btn btn-primary btn-block">
+                    Ver Más 1
+                </button>
+                <div class="contenido d-none">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores eveniet maxime enim quasi omnis, ipsam hic rem doloremque, eligendi nesciunt ab eos distinctio commodi, obcaecati libero vel. Accusamus, quas porro.
+                </div>
+            </div>
+            <div class="col-12 text-left mb-1">
+                <button class="btn-mostrar btn btn-primary btn-block">
+                    Ver Más 2
+                </button>
+                <div class="contenido d-none">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores eveniet maxime enim quasi omnis, ipsam hic rem doloremque, eligendi nesciunt ab eos distinctio commodi, obcaecati libero vel. Accusamus, quas porro.
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 mt-5">
+                <h2>Ejercicio Teoria: Reloj - Bomba</h2>
+                <p>Simular la cuenta regresiva de una bomba.</p>
+                <p>Con un botón activarla y dejar 5 segundos para escapar y comenzar la cuenta regresiva.</p>
+                <p>El valor de la cuenta regresiva se ingresa por un input</p>
+            </div>
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-8">
+                        <input id="tiempo" type="number" class="form-control" placeholder="Ingrese el tiempo en segundos" step="1">
+                        <p class="d-none text-danger">Debe ingresar un numero</p>
+                    </div>
+                    <div class="col-4">
+                        <button id="iniciar" class="btn btn-success btn-block">
+                            Iniciar
+                        </button>
+                        <button id="cancelar" class="btn btn-danger btn-block d-none mt-0">
+                            Cancelar
+                        </button>
+                    </div>
+                    <div id="bomba" class="col-12 text-center d-none">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 mt-5">
+                <h2>Ejercicio 3</h2>
+                <p>Dada una lista de tareas, permitir que el usuario agregue dinámicamente nuevas tareas y mostrarlas sin necesidad de actualizar la página.</p>
+            </div>
+            <div class="col-8 mb-2">
+                <input id="in-tarea" type="text" class="form-control" placeholder="Ingrese tarea...">
+                <p class="d-none text-danger">Debe ingresar una tarea</p>
+            </div>
+            <div class="col-4 mb-2">
+                <button id="add-tarea" class="btn btn-primary btn-block">
+                    Agregar
+                </button>
+            </div>
+            <div class="col-12 mb-2">
+                <div class="border p-2">
+                    <p><b>Lista de Tareas:</b></p>
+                    <ul id="lista-tareas"></ul>                
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery-3.3.1.slim.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
