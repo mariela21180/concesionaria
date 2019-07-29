@@ -1,0 +1,15 @@
+"use strict";
+exports.__esModule = true;
+var Impresora_1 = require("./Impresora");
+var Opcion_1 = require("./Opcion");
+var Impresion_1 = require("./Impresion");
+var miImpresora = new Impresora_1["default"]();
+var opcion1 = new Opcion_1["default"]();
+var opcion2 = new Opcion_1["default"]();
+var impresion1 = new Impresion_1["default"](["Hola", "Me llamo Mariela"], opcion1);
+var impresion2 = new Impresion_1["default"](["Nos vemos pronto", "Adios"], opcion2);
+console.log(impresion1);
+console.log(impresion2);
+miImpresora.agregarACola(impresion1);
+miImpresora.agregarACola(impresion2);
+miImpresora.imprimir();
