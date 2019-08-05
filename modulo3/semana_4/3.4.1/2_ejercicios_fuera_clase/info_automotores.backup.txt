@@ -1,0 +1,11 @@
+Ford,Fiesta,Nafta,2004,ABC123,Mariela Gonzalez,4,2,5,,,
+Fiat,Palio,Diesel,2006,BCD234,Juan Perez,3,2,3,,,
+Chevrolet,Corsa,Nafta,2002,CDE345,,4,4,3,,,
+Volkswagen,Gol,Nafta,2003,DEF456,,3,4,3,,,
+Peugeot,206,Diesel,2004,EFG567,Diego Gomez,4,2,5,,,
+Citroen,C3,Nafta,2005,FGH678,,4,2,5,,,
+Yamaha,500,Nafta,2006,MOT567,Martin Diaz,,,,500,,
+Honda,Wave,Nafta,2007,MOT678,,,,,300,,
+Fiat,619,Diesel,2010,CAM567,Horacio Monzon,,,,,3,false
+Iveco,Daily,Diesel,2011,CAM678,,,,,,4,true
+Mercedes Benz,Accelo 815,Diesel,2011,CAM678,,,,,,5,true
