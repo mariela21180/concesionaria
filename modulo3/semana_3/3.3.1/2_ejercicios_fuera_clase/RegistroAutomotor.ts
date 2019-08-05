@@ -29,7 +29,7 @@ export default class RegistroAutomotor {
      * Carga de automotores al registro a partir de un archivo de texto
      * @param automotoresTexto Es la ruta del archivo de texto a leer
      */
-    cargarAutomotores(automotoresTexto: string): Automotor[] {
+    public cargarAutomotores(automotoresTexto: string): Automotor[] {
         let automotoresString: string[];
         let aux: string[];
         let retorno: Automotor[];
@@ -67,7 +67,7 @@ export default class RegistroAutomotor {
         return indice;
     }
 
-    agregarAutomotor(automotores: Automotor): void {
+    public agregarAutomotor(automotores: Automotor): void {
         if (this.buscarPatente(automotores.getPatente()) === -1) {
             this.automotores.push(automotores);
         } else {
@@ -75,7 +75,7 @@ export default class RegistroAutomotor {
         }
     }
 
-    burcarAutomotor(patente: string): Automotor {
+    public burcarAutomotor(patente: string): Automotor {
         let indice: number = this.buscarPatente(patente);
         if ( indice === -1) {
             return null;
@@ -84,7 +84,7 @@ export default class RegistroAutomotor {
         }
     }
 
-    borrarAutomotor(patente: string): void {
+    public borrarAutomotor(patente: string): void {
         let indice: number = this.buscarPatente(patente);
         if ( indice === -1) {
             console.log("No existe un automotor con esa patente en este registro.");
@@ -94,7 +94,7 @@ export default class RegistroAutomotor {
         }
     }
 
-    actualizarAutomotor(patente: string, titular: string): void {
+    public actualizarAutomotor(patente: string, titular: string): void {
         let indice: number = this.buscarPatente(patente);
         if ( indice === -1) {
             console.log("No existe un automotor con esa patente en este registro.");
