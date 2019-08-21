@@ -1,0 +1,17 @@
+1) 
+- Crear proyectos node (npm init -y)
+- Manejar dependencias (instalar, desinstalar, actualizar)
+- Ejecutar scripts: se pueden consigurar scripts en el package.json y luego por console ejecutarlos de forma mas rapida
+
+2) Se pueden evitar errores de mal ingreso de tipo de datos antes de llegar a tiempo de ejecucion
+
+3) Las variables internas son las delcaradas dentro de una clase.
+Son intenas porque SOLO EXISTEN dentro de esa clase (por mas que puedan ser visibles por otras, sólo existen en ese ámbito)
+
+4) Ambos son tipos de relaciones entre distintas clases.
+La composicion puede ser una relacion multiple (una clase puede estar compuesta por atributos de distintos tipos de clases), pero la herencia no puede ser multiple (una clase solo puede heredar de un unico padre).
+
+5) Manejo de errores: dentro de un metodo yo puedo validar los parametros recibidos con un "if" para comprobar que no este vacio o que cumple ciertas condiciones que yo necesite.
+Si esas condiciones no se cumplen, hago un throw new Error() y en el lugar donde se ejecute ese metodo hago un try/catch para resolver ese error.
+Si se hizo el try/catch, la ejecucion no se frenará. Resolverá de la forma que lo especifique y luego continuará con la linea siguiente al catch.
+
