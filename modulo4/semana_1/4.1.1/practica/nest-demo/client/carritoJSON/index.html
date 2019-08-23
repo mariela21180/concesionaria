@@ -8,7 +8,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
     <title>Carrito JSON</title>
 </head>
 
@@ -22,7 +22,7 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
@@ -31,15 +31,29 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/diario/noticias">Noticias <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a class="nav-link" href="/carritoJSON">Carrito de Compras JSON <span class="sr-only">(current)</span></a>
                 </li>
             </ul>
         </div>
     </nav>
     <div class="container">
-        <h1>Bienvenido!</h1>
-        <p>Seleccione un item del menu.</p>
+        <h1>Carrito</h1>
+        <p>Ejemplo de arreglo de objetos en JS.</p>
+        <input type="text" name="" value="" id="producto">
+        <input type="text" name="" value="" id="precio">
+        <button type="button" id="btnAgregar">Agregar</button>
+        <button type="button" id=btnTotal>Sumar</button>
+        <table>
+        <thead>
+        <td>Producto</td>
+        <td>Precio</td>
+        </thead>
+        <tbody id="tblCompras"></tbody>
+        </table>
+        <div id="total"></div>
+        
+        
     </div>
     
     <!-- Optional JavaScript -->
@@ -47,6 +61,7 @@
     <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
     <script src="/assets/js/popper.min.js"></script>
     <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="./js/carrito.js"></script>
 </body>
 
 </html>
