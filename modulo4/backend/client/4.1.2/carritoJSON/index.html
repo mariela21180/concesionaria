@@ -8,15 +8,28 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./assets/css/styles.css">
     <title>Carrito JSON</title>
 </head>
 
 <body>
     <div id="nav"></div>
     <div class="container">
-        <h1>Bienvenido!</h1>
-        <p>Seleccione un item del menu.</p>
+        <h1>Carrito</h1>
+        <p>Ejemplo de arreglo de objetos en JS.</p>
+        <input type="text" name="" value="" id="producto">
+        <input type="text" name="" value="" id="precio">
+        <button type="button" id="btnAgregar">Agregar</button>
+        <button type="button" id=btnTotal>Sumar</button>
+        <table>
+        <thead>
+        <td>Producto</td>
+        <td>Precio</td>
+        </thead>
+        <tbody id="tblCompras"></tbody>
+        </table>
+        <div id="total"></div>
+        
+        
     </div>
     
     <!-- Optional JavaScript -->
@@ -25,6 +38,7 @@
     <script src="/assets/js/popper.min.js"></script>
     <script src="/assets/js/bootstrap.min.js"></script>
     <script src="/assets/js/main.js"></script>
+    <script src="./js/carrito.js"></script>
 </body>
 
 </html>
