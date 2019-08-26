@@ -8,13 +8,7 @@ var html = `
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
             <a class="nav-link" href="/4.1.1/diario">Diario <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="/4.1.1/diario/noticias">Noticias <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
             <a class="nav-link" href="/4.1.2/carritoJSON">Carrito de Compras JSON <span class="sr-only">(current)</span></a>
