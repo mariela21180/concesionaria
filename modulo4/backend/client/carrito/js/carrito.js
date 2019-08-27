@@ -22,15 +22,30 @@ async function load() {
 
 function agregar() {
   console.log("Funcion Agregar");
-  let producto = document.querySelector('#producto').value;
-  let precio =
-    parseInt(document.querySelector('#precio').value);
-  let renglon = {
-    "producto": producto,
-    "precio": precio
+  let alertContainer = document.querySelector('#alert');
+  let alert = `<div class="alert alert-danger alert-dismissible" role="alert">
+  Debe completar Producto y Precio para continuar.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+  </button>
+</div>`;
+  let producto = document.querySelector('#producto');
+  let precio = document.querySelector('#precio');
+  let prodVal = producto.value;
+  let preVal = parseInt(precio.value);
+  if (prodVal && preVal) {
+    alertContainer.innerHTML = "";
+    let renglon = {
+      "producto": prodVal,
+      "precio": preVal
+    }
+    producto.value = "";
+    precio.value = "";
+    compras.push(renglon);
+    mostrarTablaCompras();
+  } else {
+    alertContainer.innerHTML = alert;
   }
-  compras.push(renglon);
-  mostrarTablaCompras();
 }
 
 function sumar() {
