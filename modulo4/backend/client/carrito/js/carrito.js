@@ -1,8 +1,24 @@
+// Variables -------------------------------------------------
 let btnAgregar = document.querySelector("#btnAgregar");
 btnAgregar.addEventListener("click", agregar);
 let btnTotal = document.querySelector("#btnTotal");
 btnTotal.addEventListener("click", sumar);
 let compras = [];
+
+
+// Main ------------------------------------------------------
+
+load();
+
+
+// Methods ---------------------------------------------------
+
+async function load() {
+  let response = await fetch("./data/compras.json");  
+  let json = await response.json(); 
+  compras = json.compras;
+  mostrarTablaCompras();
+}
 
 function agregar() {
   console.log("Funcion Agregar");
