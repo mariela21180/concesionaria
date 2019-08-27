@@ -1,0 +1,25 @@
+{
+  "status": "ok",
+  "compras": [{
+    "producto": "Papa",
+    "precio": 50
+  }, {
+    "producto": "Pera",
+    "precio": 70
+  }, {
+    "producto": "Cebolla",
+    "precio": 40
+  }, {
+    "producto": "Tomate",
+    "precio": 100
+  }, {
+    "producto": "Morron",
+    "precio": 200
+  }, {
+    "producto": "Arroz",
+    "precio": 35
+  }, {
+    "producto": "Aceite",
+    "precio": 60
+  }]
+}

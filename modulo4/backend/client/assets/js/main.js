@@ -11,10 +11,10 @@ var html = `
             <a class="nav-link" href="/4.1.1/diario">Diario <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="/4.1.2/carritoJSON">Carrito de Compras JSON <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/4.1.2/documentos">Documentos <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="/4.1.2/documentos">Documentos <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/carrito">Carrito de Compras <span class="sr-only">(current)</span></a>
             </li>
         </ul>
     </div>
