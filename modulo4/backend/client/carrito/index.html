@@ -16,27 +16,28 @@
     <div class="container">
         <h1>Carrito</h1>
         <p>Ejemplo de arreglo de objetos en JS.</p>
-        <div class="row">
+        <div class="row mb-3">
             <div class="col">
                 <input class="form-control" type="text" name="" value="" id="producto">
             </div>
             <div class="col">
                 <input class="form-control" type="text" name="" value="" id="precio">
             </div>
-            <div class="col">
-                <button type="button" class="btn btn-info" id="btnAgregar">Agregar</button>
-                <button type="button" class="btn btn-success" id=btnTotal>Sumar</button>
+            <div class="col-auto">
+                <button type="button" class="btn btn-info btn-block" id="btnAgregar">Agregar</button>
+            </div>
+            <div class="col-auto">
+                <button type="button" class="btn btn-success btn-block" id=btnTotal>Sumar</button>
             </div>
         </div>
-        <table>
-        <thead>
-        <td>Producto</td>
-        <td>Precio</td>
-        </thead>
-        <tbody id="tblCompras"></tbody>
+        <table class="table table-striped table-bordered table-hover">
+          <thead class="thead-dark">
+            <th>Producto</th>
+            <th>Precio</th>
+          </thead>
+          <tbody id="tblCompras"></tbody>
         </table>
-        <div id="total"></div>
-        
+        <div id="total" class="row mt-3 mb-5"></div>       
         
     </div>
     

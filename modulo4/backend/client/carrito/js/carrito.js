@@ -45,8 +45,8 @@ function sumar() {
       max = r.precio;
   }
   document.querySelector("#total").innerHTML =
-    "<p>Total: $" + total + "</p>" +
-    "<p>Maximo: $" + max + "</p>"
+    "<div class='col text-center'><strong>Total: $" + total + "</strong></div>" +
+    "<div class='col text-center'><strong>Maximo: $" + max + "</strong></div>"
 }
 
 function mostrarTablaCompras() {
