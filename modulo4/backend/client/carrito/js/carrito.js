@@ -14,9 +14,9 @@ load();
 // Methods ---------------------------------------------------
 
 async function load() {
-  let response = await fetch("./data/compras.json");  
+  let response = await fetch("/productos");  
   let json = await response.json(); 
-  compras = json.compras;
+  compras = json;
   mostrarTablaCompras();
 }
 
