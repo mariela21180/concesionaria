@@ -24,23 +24,27 @@ function agregar() {
   console.log("Funcion Agregar");
   let alertContainer = document.querySelector('#alert');
   let alert = `<div class="alert alert-danger alert-dismissible" role="alert">
-  Debe completar Producto y Precio para continuar.
+  Debe completar todos los campos para continuar.
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>
   </button>
 </div>`;
   let producto = document.querySelector('#producto');
   let precio = document.querySelector('#precio');
+  let descripcion = document.querySelector('#descripcion');
   let prodVal = producto.value;
   let preVal = parseInt(precio.value);
-  if (prodVal && preVal) {
+  let descVal = descripcion.value;
+  if (prodVal && preVal && descVal) {
     alertContainer.innerHTML = "";
     let renglon = {
       "producto": prodVal,
-      "precio": preVal
+      "precio": preVal,
+      "descripcion": descVal
     }
     producto.value = "";
     precio.value = "";
+    descripcion.value = "";
     compras.push(renglon);
     mostrarTablaCompras();
   } else {
@@ -71,6 +75,7 @@ function mostrarTablaCompras() {
     <tr>
     <td>${r.producto}</td>
     <td>${r.precio}</td>
+    <td>${r.descripcion}</td>
     </tr>
     `;
   }

@@ -8,7 +8,8 @@ export class ProductosService {
         for (let i = 0; i < ProductosService.CANTIDAD_PRODUCTOS; i++) {
             let producto = {
                 'producto': 'producto_' + i,
-                'precio': Math.floor(Math.random() * 100)
+                'precio': Math.floor(Math.random() * 100),
+                'descripcion': 'descripcion_' + i
             };
             productos.push(producto);
         }
