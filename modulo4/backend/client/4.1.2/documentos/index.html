@@ -27,8 +27,50 @@
             <li>título más antiguo</li>
             <li>tema mas tratado</li>
         </ul>
+        <div id="alert"></div>
+        <div class="row mt-3 mb-3">
+            <div class="col">
+                <input class="form-control" placeholder="Titulo" type="text" name="" value="" id="titulo">
+            </div>
+            <div class="col">
+                <input class="form-control" placeholder="Autor" type="text" name="" value="" id="autor">
+            </div>
+            <div class="col">
+                <input class="form-control" placeholder="Temas" type="text" name="" value="" id="temas">
+            </div>
+            <div class="col">
+                <input class="form-control" placeholder="Fecha" type="date" name="" value="" id="fecha">
+            </div>
+            <div class="col-auto">
+                <button type="button" class="btn btn-info btn-block" id="btnAgregar">Agregar</button>
+            </div>
+        </div>
         <div class="row">
-            
+            <div class="col">
+                <h4>Lista de Documentos</h4>
+                <hr>
+                <table class="table table-striped table-bordered table-hover table-sm">
+                  <thead class="thead-dark">
+                    <th>Titulo</th>
+                    <th>Autor</th>
+                    <th>Temas</th>
+                    <th>Fecha</th>
+                  </thead>
+                  <tbody id="tblDocumentos"></tbody>
+                </table>
+            </div>
+            <div class="col">
+                <h4>Consultas</h4>
+                <hr>
+                <div class="btn-group btn-group-toggle" role="group">
+                    <button id="btnGetAutorPopular" class="btn btn-sm btn-outline-primary">Autor con mas Documentos</button>
+                    <button id="btnGetTemaPopular" class="btn btn-sm btn-outline-primary">Tema mas Tratado</button>
+                    <button id="btnGetTituloModerno" class="btn btn-sm btn-outline-primary">Titulo mas Moderno</button>
+                </div>
+                <div class="row">
+                    <div id="result" class="col"></div>
+                </div>
+            </div>
         </div>
     </div>
     
@@ -38,6 +80,7 @@
     <script src="/assets/js/popper.min.js"></script>
     <script src="/assets/js/bootstrap.min.js"></script>
     <script src="/assets/js/main.js"></script>
+    <script src="./js/documentos.js"></script>
 </body>
 
 </html>
