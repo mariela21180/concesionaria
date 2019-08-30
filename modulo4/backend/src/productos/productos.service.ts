@@ -32,7 +32,7 @@ export class ProductosService {
         "descripcion": "-"
     }]
     private static readonly CANTIDAD_PRODUCTOS = 10;
-    public getProducto(): any {
+    public getProductos(): any {
         // let productos = [];
         // for (let i = 0; i < ProductosService.CANTIDAD_PRODUCTOS; i++) {
         //     let producto = {
@@ -47,5 +47,9 @@ export class ProductosService {
 
         
         return this.productos;
+    }
+
+    public getProducto(i : number): any {
+        return this.productos[i];
     }
 }
