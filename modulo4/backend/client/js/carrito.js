@@ -3,6 +3,8 @@ let btnAgregar = document.querySelector("#btnAgregar");
 btnAgregar.addEventListener("click", agregar);
 let btnTotal = document.querySelector("#btnTotal");
 btnTotal.addEventListener("click", sumar);
+let btnPosicion = document.querySelector("#btnPosicion");
+btnPosicion.addEventListener("click", posicion);
 let compras = [];
 
 
@@ -14,10 +16,23 @@ load();
 // Methods ---------------------------------------------------
 
 async function load() {
-  let response = await fetch("/productos");  
-  let json = await response.json(); 
-  compras = json;
-  mostrarTablaCompras();
+  try {
+    let posicion = document.querySelector('#posicion').value;
+    let p = posicion.split(" ");
+    document.querySelector('#posicion').value = "";
+    let r = null;
+    if (posicion != "") {
+      r = await fetch(`/productos/${p[0]}/${p[1]}/${p[2]}/${p[3]}`);
+    } else {
+      r = await fetch("/productos");
+    }
+    let json = await r.json();
+    compras = json;
+    //Comun a ambas versiones arma el html de la tabla
+    mostrarTablaCompras();
+  } catch (err) {
+    alert(err.message);
+  }
 }
 
 function agregar() {
@@ -80,4 +95,19 @@ function mostrarTablaCompras() {
     `;
   }
   document.querySelector("#tblCompras").innerHTML = html;
+}
+
+async function posicion() {
+  try {
+      let posicion = document.querySelector('#posicion').value;
+      let p=posicion.split(" ");
+      document.querySelector('#posicion').value="";        
+      let r = await fetch(`/productos/${p[0]}/${p[1]}/${p[2]}/${p[3]}`);
+      let json = await r.json();
+      compras = json;
+      //Comun a ambas versiones arma el html de la tabla
+      mostrarTablaCompras();
+  } catch (err) {
+      alert(err.message);
+  }
 }

@@ -49,7 +49,14 @@ export class ProductosService {
         return this.productos;
     }
 
-    public getProducto(i : number): any {
-        return this.productos[i];
+    public getProducto(p1 : number, p2 : number, p3 : number, p4 : number): any {
+        let retorno = [];
+        for (let i=0; i<ProductosService.CANTIDAD_PRODUCTOS; i++) {
+            if (i==p1 || i==p2 || i==p3 || i==p4) {
+                let producto = this.productos[i];
+                retorno.push(producto);
+            }
+        }
+        return retorno;
     }
 }
