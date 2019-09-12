@@ -5,6 +5,8 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { ProductosController } from './productos/productos.controller';
 import { ProductosService } from './productos/productos.service';
+import { CalcularService } from './calcular/calcular.service';
+import { CalcularController } from './calcular/calcular.controller';
 
 @Module({
   imports: [
@@ -13,7 +15,7 @@ import { ProductosService } from './productos/productos.service';
       'client'),
     }),
   ],
-  controllers: [AppController, ProductosController],
-  providers: [AppService, ProductosService],
+  controllers: [AppController, ProductosController, CalcularController],
+  providers: [AppService, ProductosService, CalcularService],
 })
 export class AppModule {}
