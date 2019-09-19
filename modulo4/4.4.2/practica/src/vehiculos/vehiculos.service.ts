@@ -15,6 +15,9 @@ export class VehiculosService {
     public getVehiculos(): Vehiculo[] {
         return this.listaVehiculos;
     }
+    public getVehiculo(id: number): Vehiculo {
+        return this.listaVehiculos[id]; 
+    }
     public getAutos(): Auto[] {
         const autos: Auto[] = [];
         this.listaVehiculos.forEach(vehiculo => {
@@ -35,8 +38,8 @@ export class VehiculosService {
     }
 
     public create(vehiculo: any) {
-        console.log("VEHICULO: ");
-        console.log("----------------");
+        // console.log("VEHICULO: ");
+        // console.log("----------------");
         
         let tipoVehiculo = this.consultarTipo(vehiculo);
         
@@ -44,7 +47,7 @@ export class VehiculosService {
             return "parametros incorrectos";
         } else {
             let vehiculoNuevo: Vehiculo = this.crearVehiculo(vehiculo);   
-            console.log(vehiculoNuevo);         
+            // console.log(vehiculoNuevo);         
             this.listaVehiculos.push(vehiculoNuevo);            
             this.persistirLista();
             return "ok";
@@ -212,21 +215,21 @@ export class VehiculosService {
     }  
 
     private crearAuto(vehiculoArg: any): Auto {
-        console.log("Creando Auto:"); 
-        console.log("------------------------------"); 
+        // console.log("Creando Auto:"); 
+        // console.log("------------------------------"); 
 
         let auto: Auto = new Auto(vehiculoArg.data.marca, vehiculoArg.data.modelo, parseInt(vehiculoArg.data.anio), parseInt(vehiculoArg.data.precio),parseInt(vehiculoArg.data.kilometraje), parseInt(vehiculoArg.data.capacidad), this.consultarPatente(vehiculoArg), this.consultarPuertas(vehiculoArg), this.consultarAirbags(vehiculoArg), vehiculoArg.data.funcionaOk);
-        console.log(auto);
+        // console.log(auto);
 
         return auto;
     }
 
     private crearCamioneta(vehiculoArg: any): Camioneta {
-        console.log("Creando Camioneta:");
-        console.log("------------------------------");  
+        // console.log("Creando Camioneta:");
+        // console.log("------------------------------");  
 
         let camioneta: Camioneta = new Camioneta(vehiculoArg.data.marca, vehiculoArg.data.modelo, parseInt(vehiculoArg.data.anio), parseInt(vehiculoArg.data.precio),parseInt(vehiculoArg.data.kilometraje), parseInt(vehiculoArg.data.capacidad), this.consultarPatente(vehiculoArg), this.consultarPuertas(vehiculoArg), this.consultarAirbags(vehiculoArg), vehiculoArg.data.funcionaOk);
-        console.log(camioneta);
+        // console.log(camioneta);
 
         return camioneta;
     }

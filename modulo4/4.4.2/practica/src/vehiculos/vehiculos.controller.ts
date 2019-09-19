@@ -20,6 +20,10 @@ export class VehiculosController {
     public getCamionetas(): Camioneta[] {
         return this.vehiculosService.getCamionetas();
     }
+    @Get(':id')
+    public getVehiculo(@Param('id') id): Vehiculo {
+        return this.vehiculosService.getVehiculo(id);
+    }
     
     // Ejemplo Body
     // {
@@ -44,13 +48,13 @@ export class VehiculosController {
     }
 
     @Put(':id')
-    public updateVehiculo(@Body() vehiculo: any, @Param('id') linea): string {
-        return this.vehiculosService.setVehiculo(vehiculo, linea);
+    public updateVehiculo(@Body() vehiculo: any, @Param('id') id): string {
+        return this.vehiculosService.setVehiculo(vehiculo, id);
     }
 
     @Delete(':id')
-    public deleteVehiculo(@Param('id') linea): string {
-        return this.vehiculosService.deleteVehiculo(linea);
+    public deleteVehiculo(@Param('id') id): string {
+        return this.vehiculosService.deleteVehiculo(id);
     }
 
 }
