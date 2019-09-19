@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Post, Body } from '@nestjs/common';
+import { Controller, Get, Param, Post, Body, Put } from '@nestjs/common';
 import { VehiculosService } from './vehiculos.service';
 import Vehiculo from './vehiculo';
 import Camioneta from './camioneta';
@@ -22,7 +22,7 @@ export class VehiculosController {
     }
 
     @Post()
-    create(@Body() vehiculo: any): string {
+    public create(@Body() vehiculo: any): string {
         // Ejemplo Body
         // {
         //     "tipo": "camioneta",
@@ -42,4 +42,7 @@ export class VehiculosController {
 
         return this.vehiculosService.create(vehiculo);
     }
+
+    // @Put(:index)
+
 }

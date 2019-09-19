@@ -36,37 +36,25 @@ export class VehiculosService {
 
     public create(vehiculo: any) {
         console.log("VEHICULO: ");
-        console.log(vehiculo);
         console.log("----------------");
         
         let vehiculoNuevo: Vehiculo;
-        if(vehiculo.tipo == 'auto' || vehiculo.tipo == 'camioneta') {
-            if (vehiculo.tipo == 'auto') {
+        let tipoVehiculo = vehiculo.tipo;
+        
+        if(tipoVehiculo != 'auto' && tipoVehiculo != 'camioneta') {
+            return "parametros incorrectos";
+        } else {
+            if (tipoVehiculo == 'auto') {
                 vehiculoNuevo = new Auto(vehiculo.data.marca, vehiculo.data.modelo, vehiculo.data.anio, vehiculo.data.precio, vehiculo.data.kilometraje, vehiculo.data.capacidad, vehiculo.data.patente, vehiculo.data.puertas, vehiculo.data.airbags, vehiculo.data.funcionaOk);
     
-            } else if (vehiculo.tipo == 'camioneta') {
+            } 
+            if (tipoVehiculo == 'camioneta') {
                 vehiculoNuevo = new Camioneta(vehiculo.data.marca, vehiculo.data.modelo, vehiculo.data.anio, vehiculo.data.precio, vehiculo.data.kilometraje, vehiculo.data.capacidad, vehiculo.data.patente, vehiculo.data.puertas, vehiculo.data.airbags, vehiculo.data.funcionaOk);
             }
 
             this.listaVehiculos.push(vehiculoNuevo);
-            console.log(vehiculoNuevo);
-            
-            fs.appendFileSync('vehiculos.csv',
-                "\n"+
-                vehiculo.tipo + ","+
-                vehiculoNuevo.getMarca() + ","+ 
-                vehiculoNuevo.getModelo() + ","+ 
-                vehiculoNuevo.getAnio() + ","+ 
-                vehiculoNuevo.getKilometraje() + ","+ 
-                vehiculoNuevo.getPrecio() + ","+ 
-                vehiculo.data.capacidad + ","+ 
-                vehiculoNuevo.getPatente() + ","+ 
-                vehiculoNuevo.getPuertas() + ","+
-                vehiculoNuevo.getAirbags() + ","+ 
-                vehiculoNuevo.getFuncionaOk().toString()); 
+            this.persistirVehiculos()
             return "ok";
-        } else {
-            return "parametros incorrectos";
         }
     }
 
@@ -84,6 +72,45 @@ export class VehiculosService {
                 vehiculo = new Camioneta(elementos[i][1], elementos[i][2], parseInt(elementos[i][3]), parseInt(elementos[i][4]), parseInt(elementos[i][5]), parseInt(elementos[i][6]), elementos[i][7], parseInt(elementos[i][8]), parseInt(elementos[i][9]), (elementos[i][10] === "true"));
             }
             this.listaVehiculos.push(vehiculo);
+        }
+    }
+
+    private persistirVehiculos() {
+        fs.writeFileSync('vehiculos.csv', '', 'utf8');
+        for (let i = 0; i < this.listaVehiculos.length; i++) {
+            const vehiculo = this.listaVehiculos[i];
+            let tipo: string = ""; 
+            let capacidad: number = null;
+            let airbags: number;
+            if (vehiculo instanceof Auto) {
+                tipo = "auto";
+                capacidad = vehiculo.getCapacidadBaul();
+            } 
+            if (vehiculo instanceof Camioneta) {
+                tipo = "camioneta";
+                capacidad = vehiculo.getCapacidadCarga();
+            } 
+            if(!vehiculo.getAirbags()) {
+                airbags = 0;
+            } else {
+                airbags = vehiculo.getAirbags();
+            }
+
+            fs.appendFileSync('vehiculos.csv',
+                tipo + ","+
+                vehiculo.getMarca() + ","+ 
+                vehiculo.getModelo() + ","+ 
+                vehiculo.getAnio() + ","+ 
+                vehiculo.getKilometraje() + ","+ 
+                vehiculo.getPrecio() + ","+ 
+                capacidad + ","+  
+                vehiculo.getPatente() + ","+ 
+                vehiculo.getPuertas() + ","+
+                airbags + ","+ 
+                vehiculo.getFuncionaOk().toString()); 
+            if (i < this.listaVehiculos.length-1) {
+                fs.appendFileSync('vehiculos.csv',"\n"); 
+            }
         }
     }
 }
