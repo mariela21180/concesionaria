@@ -58,6 +58,12 @@ export class VehiculosService {
         return "ok";
     }
 
+    public deleteVehiculo(id: number): string {
+        this.listaVehiculos.splice(id,1);
+        this.persistirLista();
+        return "ok";
+    }
+
     private loadVehiculos(): void {
         let archivo = fs.readFileSync('vehiculos.csv', 'utf8');
         const elementos = archivo.split('\n').map(p => p.replace('\r', '')).map(p => p.split(',')); 

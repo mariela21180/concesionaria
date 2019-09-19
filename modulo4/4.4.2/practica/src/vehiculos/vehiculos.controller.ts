@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Post, Body, Put } from '@nestjs/common';
+import { Controller, Get, Param, Post, Body, Put, Delete } from '@nestjs/common';
 import { VehiculosService } from './vehiculos.service';
 import Vehiculo from './vehiculo';
 import Camioneta from './camioneta';
@@ -46,6 +46,11 @@ export class VehiculosController {
     @Put(':id')
     public updateVehiculo(@Body() vehiculo: any, @Param('id') linea): string {
         return this.vehiculosService.setVehiculo(vehiculo, linea);
+    }
+
+    @Delete(':id')
+    public deleteVehiculo(@Param('id') linea): string {
+        return this.vehiculosService.deleteVehiculo(linea);
     }
 
 }
