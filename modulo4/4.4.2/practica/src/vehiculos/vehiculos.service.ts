@@ -16,7 +16,7 @@ export class VehiculosService {
         return this.listaVehiculos;
     }
     public getVehiculo(id: number): Vehiculo {
-        return this.listaVehiculos[id]; 
+        return this.listaVehiculos[id];
     }
     public getAutos(): Auto[] {
         const autos: Auto[] = [];
