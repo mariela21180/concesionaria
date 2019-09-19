@@ -55,6 +55,8 @@ async function load() {
                 r = await fetch("/vehiculos/autos");                
             } else if (this.id == "btnCamionetas") {
                 r = await fetch("/vehiculos/camionetas");                
+            } else {
+                r = await fetch("/vehiculos");   
             }
         }
         let json = await r.json();
@@ -86,10 +88,12 @@ function mostrarVehiculo() {
 
     if (!id) {
         alertContainer.innerHTML = alert;
+        posicion.classList.add('is-invalid'); 
         return false;
     } else {
         load();
         alertContainer.innerHTML = "";
+        posicion.value = "";
         return true;
     }
 }
@@ -118,12 +122,14 @@ function cancelar() {
 // Metodos privados
 
 function mostrarFormulario() {
+    limpiarValidacion();
     fomulario.style.display = "flex";
     acciones.style.display = "none";
 }
 function ocultarFormulario() {
     fomulario.style.display = "none";
     acciones.style.display = "flex";
+    limpiarValidacion();
 }
 function limpiarCampos() {
     inputTipo.value = "";
@@ -138,6 +144,24 @@ function limpiarCampos() {
     inputPuertas.value = "";
     inputAirbags.value = "";
     inputFuncionaOk.value = "";
+}
+function limpiarValidacion() {    
+    alertContainer.innerHTML = "";
+    inputTipo.classList.remove('is-invalid');
+    inputTipo.classList.remove('is-valid');
+    inputMarca.classList.remove('is-invalid');
+    inputMarca.classList.remove('is-valid');
+    inputModelo.classList.remove('is-invalid');
+    inputModelo.classList.remove('is-valid');
+    inputAnio.classList.remove('is-invalid');
+    inputAnio.classList.remove('is-valid');
+    inputPrecio.classList.remove('is-invalid');
+    inputPrecio.classList.remove('is-valid');
+    inputKilometraje.classList.remove('is-invalid');
+    inputKilometraje.classList.remove('is-valid');
+    inputCapacidad.classList.remove('is-invalid');
+    inputCapacidad.classList.remove('is-valid');
+    posicion.classList.remove('is-invalid'); 
 }
 
 function validarCampos() {
@@ -193,21 +217,7 @@ function validarCampos() {
         } 
         return false;
     } else {
-        alertContainer.innerHTML = "";
-        inputTipo.classList.remove('is-invalid');
-        inputTipo.classList.remove('is-valid');
-        inputMarca.classList.remove('is-invalid');
-        inputMarca.classList.remove('is-valid');
-        inputModelo.classList.remove('is-invalid');
-        inputModelo.classList.remove('is-valid');
-        inputAnio.classList.remove('is-invalid');
-        inputAnio.classList.remove('is-valid');
-        inputPrecio.classList.remove('is-invalid');
-        inputPrecio.classList.remove('is-valid');
-        inputKilometraje.classList.remove('is-invalid');
-        inputKilometraje.classList.remove('is-valid');
-        inputCapacidad.classList.remove('is-invalid');
-        inputCapacidad.classList.remove('is-valid');
+        limpiarValidacion();
         return true;
     }
 }
@@ -231,7 +241,7 @@ function crearJSONdeCampos() {
 }
 
 function mostrarTablaVehiculos() {
-    alertContainer.innerHTML = "";
+    limpiarValidacion();
     let vehiculo = "";
     let html = "";
     if (vehiculos.length > 1) {
