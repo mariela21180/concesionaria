@@ -18,7 +18,7 @@ export default class Vehiculo {
         if (patente) {
             this.patente = patente;
         } else {
-            this.patente = "";
+            this.patente = null;
         }
         if (puertas) {
             this.puertas = puertas;
@@ -30,11 +30,7 @@ export default class Vehiculo {
         } else {
             this.airbags = null;
         }
-        if (funcionaOk) {
-            this.funcionaOk = funcionaOk;
-        } else {
-            this.funcionaOk = null;
-        }
+        this.funcionaOk = funcionaOk;
     }
     
     public setPatente(patente: string): void {

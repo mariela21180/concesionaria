@@ -20,29 +20,32 @@ export class VehiculosController {
     public getCamionetas(): Camioneta[] {
         return this.vehiculosService.getCamionetas();
     }
+    
+    // Ejemplo Body
+    // {
+    //     "tipo": "camioneta",
+    //     "data": {
+    //         "marca": "Peugeot",
+    //         "modelo": "Partner",
+    //         "anio": 2018,
+    //         "precio": 250000,
+    //         "kilometraje": 10000,
+    //         "capacidad": 4087,
+    //         "patente": "WEP123",
+    //         "puertas": 5,
+    //         "airbags": 4,
+    //         "funcionaOk": true
+    //     }
+    // } 
 
     @Post()
     public create(@Body() vehiculo: any): string {
-        // Ejemplo Body
-        // {
-        //     "tipo": "camioneta",
-        //     "data": {
-        //         "marca": "Peugeot",
-        //         "modelo": "Partner",
-        //         "anio": 2018,
-        //         "precio": 250000,
-        //         "kilometraje": 10000,
-        //         "patente": "AKK143",
-        //         "puertas": 5,
-        //         "airbags": 2,
-        //         "funcionaOk": true,
-        //         "capacidad": 4087
-        //     }
-        // } 
-
         return this.vehiculosService.create(vehiculo);
     }
 
-    // @Put(:index)
+    @Put(':id')
+    public updateVehiculo(@Body() vehiculo: any, @Param('id') linea): string {
+        return this.vehiculosService.setVehiculo(vehiculo, linea);
+    }
 
 }
