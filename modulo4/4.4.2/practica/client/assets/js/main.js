@@ -113,6 +113,25 @@ function guardarVehiculo() {
     }
 }
 
+function editarPosicion() {
+    console.log("Funcion Editar Posicion");
+    let posicion = this.getAttribute("idx");
+    console.log(posicion);
+    // let datos = this.getAttribute("datos").split(',');
+    // document.querySelector('#producto').value=datos[0];
+    // document.querySelector('#precio').value=datos[1];
+    // document.querySelector('#descripcion').value=datos[2];
+    // document.querySelector('#iva').value=datos[3];
+}
+function eliminarPosicion() {
+    console.log("Funcion Eliminar Posicion");
+    let posicion = this.getAttribute("idx");
+    console.log(posicion);
+    // if (!eliminarDeServidor("", posicion)) 
+    //     alert ("Error eliminando en servidor");
+    // load();
+}
+
 function cancelar() {
     limpiarCampos();
     ocultarFormulario();
@@ -245,7 +264,8 @@ function mostrarTablaVehiculos() {
     let vehiculo = "";
     let html = "";
     if (vehiculos.length > 1) {
-        for (let r of vehiculos) {
+        for (let i = 0; i < vehiculos.length; i++) {
+            const r = vehiculos[i];
             vehiculo = r;
             html += filaTablaVehiculo(vehiculo);
         }
@@ -255,6 +275,11 @@ function mostrarTablaVehiculos() {
         html = filaTablaVehiculo(vehiculo);
     }
     tblVehiculos.innerHTML = html;
+        
+    let btnsEliminar = document.querySelectorAll(".btnElimPorPos");
+    let btnsEditar = document.querySelectorAll(".btnEditPorPos");
+    btnsEditar.forEach(b => {b.addEventListener("click", editarPosicion)});
+    btnsEliminar.forEach(a => {a.addEventListener("click", eliminarPosicion)});
 }
 
 function filaTablaVehiculo(vehiculo) {    
@@ -278,6 +303,7 @@ function filaTablaVehiculo(vehiculo) {
     <td>${vehiculo.puertas}</td>
     <td>${vehiculo.airbags}</td>
     <td>${vehiculo.funcionaOk}</td>
+    <td><button type="button" class="btnElimPorPos btn-sm btn-danger mr-1" idx=${vehiculo.patente}><i class="fa fa-trash"></i></button><button type="button" class="btnEditPorPos btn-sm btn-primary" idx=${vehiculo.patente}><i class="fa fa-pencil"></i></button></td>
     </tr>
     `;
     return html;
