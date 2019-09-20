@@ -21,7 +21,7 @@ let inputFuncionaOk = document.querySelector('#funcionaOk');
 let btnAceptar = document.querySelector('#btnAceptar');
 let btnCancelar = document.querySelector('#btnCancelar');
 let tblVehiculos = document.querySelector('#tblVehiculos');
-let posicion = document.querySelector('#posicion');
+let patenteABuscar = document.querySelector('#patenteABuscar');
 let vehiculos = [];
 
 // Eventos
@@ -44,10 +44,9 @@ ocultarFormulario();
 async function load() {
     try {
         let r = null;
-        let id = posicion.value;
-        if (id) {
-            r = await fetch(`/vehiculos/${posicion.value}`);
-
+        let patenteValue = patenteABuscar.value;
+        if (patenteValue) {
+            r = await fetch(`/vehiculos/${patenteValue}`);
         } else {
             if (this.id == "btnVehiculos") {
                 r = await fetch("/vehiculos");                
@@ -60,8 +59,12 @@ async function load() {
             }
         }
         let json = await r.json();
-        vehiculos = json;
-        mostrarTablaVehiculos();
+        if (json.statusCode != 500) {
+            vehiculos = json;
+            mostrarTablaVehiculos();
+        } else {
+            throw Error("No se encontró el vehículo. Verifique la patente e intente nuevamente");
+        }
     } catch (e) {
         alert(e.message);
     }
@@ -78,22 +81,22 @@ function agregarVehiculo() {
 
 function mostrarVehiculo() {
     const alert = `<div class="alert alert-danger alert-dismissible" role="alert">
-        Debe completar el Id para continuar.
+        Debe completar la patente para continuar.
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>`;
 
-    let id = posicion.value;
+    let patenteValue = patenteABuscar.value;
 
-    if (!id) {
+    if (!patenteValue) {
         alertContainer.innerHTML = alert;
-        posicion.classList.add('is-invalid'); 
+        patenteABuscar.classList.add('is-invalid'); 
         return false;
     } else {
         load();
         alertContainer.innerHTML = "";
-        posicion.value = "";
+        patenteABuscar.value = "";
         return true;
     }
 }
@@ -180,7 +183,7 @@ function limpiarValidacion() {
     inputKilometraje.classList.remove('is-valid');
     inputCapacidad.classList.remove('is-invalid');
     inputCapacidad.classList.remove('is-valid');
-    posicion.classList.remove('is-invalid'); 
+    patenteABuscar.classList.remove('is-invalid'); 
 }
 
 function validarCampos() {
@@ -303,7 +306,7 @@ function filaTablaVehiculo(vehiculo) {
     <td>${vehiculo.puertas}</td>
     <td>${vehiculo.airbags}</td>
     <td>${vehiculo.funcionaOk}</td>
-    <td><button type="button" class="btnElimPorPos btn-sm btn-danger mr-1" idx=${vehiculo.patente}><i class="fa fa-trash"></i></button><button type="button" class="btnEditPorPos btn-sm btn-primary" idx=${vehiculo.patente}><i class="fa fa-pencil"></i></button></td>
+    <td><button type="button" class="btnEditPorPos btn-sm btn-primary mr-1" idx=${vehiculo.patente}><i class="fa fa-pencil"></i></button><button type="button" class="btnElimPorPos btn-sm btn-danger" idx=${vehiculo.patente}><i class="fa fa-trash"></i></button></td>
     </tr>
     `;
     return html;

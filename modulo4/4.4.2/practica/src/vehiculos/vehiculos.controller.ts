@@ -20,9 +20,9 @@ export class VehiculosController {
     public getCamionetas(): Camioneta[] {
         return this.vehiculosService.getCamionetas();
     }
-    @Get(':id')
-    public getVehiculo(@Param('id') id): Vehiculo {
-        return this.vehiculosService.getVehiculo(id);
+    @Get(':patente')
+    public getVehiculo(@Param('patente') patente): Vehiculo {
+        return this.vehiculosService.getVehiculo(patente);
     }
     
     // Ejemplo Body
@@ -47,14 +47,14 @@ export class VehiculosController {
         return this.vehiculosService.create(vehiculo);
     }
 
-    @Put(':id')
-    public updateVehiculo(@Body() vehiculo: any, @Param('id') id): string {
-        return this.vehiculosService.setVehiculo(vehiculo, id);
+    @Put(':patente')
+    public updateVehiculo(@Body() vehiculo: any, @Param('patente') patente): string {
+        return this.vehiculosService.setVehiculo(vehiculo, patente);
     }
 
-    @Delete(':id')
-    public deleteVehiculo(@Param('id') id): string {
-        return this.vehiculosService.deleteVehiculo(id);
+    @Delete(':patente')
+    public deleteVehiculo(@Param('patente') patente): string {
+        return this.vehiculosService.deleteVehiculo(patente);
     }
 
 }

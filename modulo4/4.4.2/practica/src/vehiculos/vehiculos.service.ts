@@ -15,8 +15,14 @@ export class VehiculosService {
     public getVehiculos(): Vehiculo[] {
         return this.listaVehiculos;
     }
-    public getVehiculo(id: number): Vehiculo {
-        return this.listaVehiculos[id];
+    public getVehiculo(patente: string): Vehiculo {
+        let posicion:number = this.buscarVehiculoPorPatente(patente);
+        if (posicion != -1) {
+            return this.listaVehiculos[posicion];
+        } else {
+            throw Error("No se encontró el vehículo. Verifique la patente e intente nuevamente");
+        }
+
     }
     public getAutos(): Auto[] {
         const autos: Auto[] = [];
@@ -273,5 +279,15 @@ export class VehiculosService {
         vehiculo = this.crearVehiculo(vehiculoJson); 
 
         return vehiculo;
+    }
+    
+    private buscarVehiculoPorPatente(patente: string): number {
+        for (let i = 0; i < this.listaVehiculos.length; i++) {
+            const vehiculo = this.listaVehiculos[i];
+            if (vehiculo.getPatente().toLowerCase() === patente.toLowerCase()) {
+                return i;
+            }            
+        }
+        return -1;
     }
 }
