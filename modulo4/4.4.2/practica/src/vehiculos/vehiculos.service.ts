@@ -20,7 +20,7 @@ export class VehiculosService {
         if (posicion != -1) {
             return this.listaVehiculos[posicion];
         } else {
-            throw Error("No se encontró el vehículo. Verifique la patente e intente nuevamente");
+            return null;
         }
 
     }
@@ -67,10 +67,15 @@ export class VehiculosService {
         return "ok";
     }
 
-    public deleteVehiculo(id: number): string {
-        this.listaVehiculos.splice(id,1);
-        this.persistirLista();
-        return "ok";
+    public deleteVehiculo(patente: string): string {
+        let posicion:number = this.buscarVehiculoPorPatente(patente);
+        if (posicion != -1) {
+            this.listaVehiculos.splice(posicion,1);
+            this.persistirLista();
+            return "ok";
+        } else {
+            return null;
+        }
     }
 
     private loadVehiculos(): void {
@@ -261,6 +266,7 @@ export class VehiculosService {
         } else if (vehiculoArg[10] === "false") {
             funcionaOk = false;
         }
+        // console.log(vehiculoArg); 
         let vehiculoJson = {
             "tipo": vehiculoArg[0],
             "data": {

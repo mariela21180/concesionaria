@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Post, Body, Put, Delete } from '@nestjs/common';
+import { Controller, Get, Param, Post, Body, Put, Delete, HttpException, HttpStatus } from '@nestjs/common';
 import { VehiculosService } from './vehiculos.service';
 import Vehiculo from './vehiculo';
 import Camioneta from './camioneta';
@@ -22,7 +22,15 @@ export class VehiculosController {
     }
     @Get(':patente')
     public getVehiculo(@Param('patente') patente): Vehiculo {
-        return this.vehiculosService.getVehiculo(patente);
+        let vehiculo = this.vehiculosService.getVehiculo(patente);
+        if (!vehiculo) {
+            throw new HttpException({
+                status: HttpStatus.NOT_FOUND,
+                error: 'Patente no encontrada',
+              }, 404);
+        } else {
+            return vehiculo;
+        }
     }
     
     // Ejemplo Body
@@ -54,7 +62,15 @@ export class VehiculosController {
 
     @Delete(':patente')
     public deleteVehiculo(@Param('patente') patente): string {
-        return this.vehiculosService.deleteVehiculo(patente);
+        let r = this.vehiculosService.deleteVehiculo(patente);
+        if (!r) {
+            throw new HttpException({
+                status: HttpStatus.NOT_FOUND,
+                error: 'Patente no encontrada',
+              }, 404);
+        } else {
+            return r;
+        }
     }
 
 }
