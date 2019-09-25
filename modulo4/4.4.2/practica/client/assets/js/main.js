@@ -26,7 +26,7 @@ let vehiculos = [];
 let editar = false;
 
 // Eventos
-btnNuevoVehiculo.addEventListener("click", agregarVehiculo);
+btnNuevoVehiculo.addEventListener("click", mostrarFormulario);
 btnVehiculos.addEventListener("click", load);
 btnAutos.addEventListener("click", load);
 btnCamionetas.addEventListener("click", load);
@@ -92,12 +92,8 @@ async function eliminarDeServidor(patente) {
 async function actualizarEnServidor(registro) {
     let patente = registro.data.patente;
     console.log(patente);
-    let r = await fetch(`/vehiculos/${patente}`, { "method": "PUT", "headers": { "Content-Type": "application/json" }, "body": JSON.stringify(registro)});        
+    let r = await fetch(`/vehiculos/${patente}`, { "method": "PUT", "headers": { "Content-Type": "application/json" }, "body": JSON.stringify(registro)});      
     return (r.ok);
-}
-
-function agregarVehiculo() {
-    mostrarFormulario();
 }
 
 function mostrarVehiculo() {
