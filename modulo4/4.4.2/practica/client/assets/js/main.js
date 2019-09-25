@@ -36,10 +36,7 @@ btnCancelar.addEventListener("click", cancelar);
 // Main
 ocultarFormulario();
 
-
-
-
-// Metodos publico
+// Metodos publicos
 
 async function load() {
     try {
@@ -58,12 +55,17 @@ async function load() {
                 r = await fetch("/vehiculos");   
             }
         }
-        let json = await r.json();
-        if (json.statusCode != 500) {
-            vehiculos = json;
+        if (r.status != 404) {
+            let json = await r.json();
+            if (patenteValue) {
+                vehiculos = [];
+                vehiculos.push(json);
+            } else {
+                vehiculos = json;
+            }
             mostrarTablaVehiculos();
         } else {
-            throw Error("No se encontró el vehículo. Verifique la patente e intente nuevamente");
+            alert("No se encontró el vehículo. Verifique la patente e intente nuevamente");
         }
     } catch (e) {
         alert(e.message);
@@ -73,6 +75,18 @@ async function load() {
 async function agregarAServidor(registro) {
     let r = await fetch("/vehiculos", { "method": "POST", "headers": { "Content-Type": "application/json" }, "body": JSON.stringify(registro)})
     return (r.ok);
+}
+async function eliminarDeServidor(patente) {
+    try {
+        let r = await fetch(`/vehiculos/${patente}`, { "method": "DELETE", "headers": { "Content-Type": "application/json" }});
+        if (r.status != 404) {
+            load();
+        } else {
+            alert ("No se encontró el vehículo. Verifique la patente e intente nuevamente");
+        }
+    } catch (e) {
+        alert(e);
+    }
 }
 
 function agregarVehiculo() {
@@ -116,23 +130,19 @@ function guardarVehiculo() {
     }
 }
 
-function editarPosicion() {
+function editarPorPatente() {
     console.log("Funcion Editar Posicion");
-    let posicion = this.getAttribute("idx");
-    console.log(posicion);
+    let patenteAEditar = this.getAttribute("data-patente");
+    console.log(patenteAditar);
     // let datos = this.getAttribute("datos").split(',');
     // document.querySelector('#producto').value=datos[0];
     // document.querySelector('#precio').value=datos[1];
     // document.querySelector('#descripcion').value=datos[2];
     // document.querySelector('#iva').value=datos[3];
 }
-function eliminarPosicion() {
-    console.log("Funcion Eliminar Posicion");
-    let posicion = this.getAttribute("idx");
-    console.log(posicion);
-    // if (!eliminarDeServidor("", posicion)) 
-    //     alert ("Error eliminando en servidor");
-    // load();
+function eliminarPorPatente() {
+    let patenteAEliminar = this.getAttribute("data-patente");
+    eliminarDeServidor(patenteAEliminar);
 }
 
 function cancelar() {
@@ -266,32 +276,28 @@ function mostrarTablaVehiculos() {
     limpiarValidacion();
     let vehiculo = "";
     let html = "";
-    if (vehiculos.length > 1) {
-        for (let i = 0; i < vehiculos.length; i++) {
-            const r = vehiculos[i];
-            vehiculo = r;
-            html += filaTablaVehiculo(vehiculo);
-        }
-    } else {
-        console.log(vehiculos);
-        vehiculo = vehiculos;
-        html = filaTablaVehiculo(vehiculo);
+    for (let i = 0; i < vehiculos.length; i++) {
+        const r = vehiculos[i];
+        vehiculo = r;
+        html += filaTablaVehiculo(vehiculo);
     }
     tblVehiculos.innerHTML = html;
-        
-    let btnsEliminar = document.querySelectorAll(".btnElimPorPos");
-    let btnsEditar = document.querySelectorAll(".btnEditPorPos");
-    btnsEditar.forEach(b => {b.addEventListener("click", editarPosicion)});
-    btnsEliminar.forEach(a => {a.addEventListener("click", eliminarPosicion)});
+    let btnsEliminar = document.querySelectorAll(".btnElimPorPatente");
+    let btnsEditar = document.querySelectorAll(".btnEditPorPatente");
+    btnsEditar.forEach(b => {b.addEventListener("click", editarPorPatente)});
+    btnsEliminar.forEach(a => {a.addEventListener("click", eliminarPorPatente)});
 }
 
 function filaTablaVehiculo(vehiculo) {    
     let tipo = "";
     let html = "";
+    let capacidad = 0;
     if (vehiculo["capacidadBaul"]) {
         tipo = "Auto";
+        capacidad = vehiculo["capacidadBaul"];
     } else if (vehiculo["capacidadCarga"]) {
         tipo = "Camioneta";
+        capacidad = vehiculo["capacidadCarga"]
     }
     html += `
     <tr>
@@ -301,12 +307,12 @@ function filaTablaVehiculo(vehiculo) {
     <td>${vehiculo.anio}</td>
     <td>${vehiculo.precio}</td>
     <td>${vehiculo.kilometraje}</td>
-    <td>${vehiculo.capacidad}</td>
+    <td>${capacidad}</td>
     <td>${vehiculo.patente}</td>
     <td>${vehiculo.puertas}</td>
     <td>${vehiculo.airbags}</td>
     <td>${vehiculo.funcionaOk}</td>
-    <td><button type="button" class="btnEditPorPos btn-sm btn-primary mr-1" idx=${vehiculo.patente}><i class="fa fa-pencil"></i></button><button type="button" class="btnElimPorPos btn-sm btn-danger" idx=${vehiculo.patente}><i class="fa fa-trash"></i></button></td>
+    <td><button type="button" class="btnEditPorPatente btn-sm btn-primary mr-1" data-patente=${vehiculo.patente}><i class="fa fa-pencil"></i></button><button type="button" class="btnElimPorPatente btn-sm btn-danger" data-patente=${vehiculo.patente}><i class="fa fa-trash"></i></button></td>
     </tr>
     `;
     return html;
