@@ -23,6 +23,7 @@ let btnCancelar = document.querySelector('#btnCancelar');
 let tblVehiculos = document.querySelector('#tblVehiculos');
 let patenteABuscar = document.querySelector('#patenteABuscar');
 let vehiculos = [];
+let editar = false;
 
 // Eventos
 btnNuevoVehiculo.addEventListener("click", agregarVehiculo);
@@ -88,6 +89,12 @@ async function eliminarDeServidor(patente) {
         alert(e);
     }
 }
+async function actualizarEnServidor(registro) {
+    let patente = registro.data.patente;
+    console.log(patente);
+    let r = await fetch(`/vehiculos/${patente}`, { "method": "PUT", "headers": { "Content-Type": "application/json" }, "body": JSON.stringify(registro)});        
+    return (r.ok);
+}
 
 function agregarVehiculo() {
     mostrarFormulario();
@@ -118,31 +125,77 @@ function mostrarVehiculo() {
 function guardarVehiculo() {
     if (validarCampos()) {
         let json = crearJSONdeCampos();
-        console.log(json);
-        if (agregarAServidor(json)) {
-            load();
+        if (!editar) {
+            console.log("Creando Vehiculo:")
+            if (agregarAServidor(json)) {
+                load();
+                limpiarCampos()
+                ocultarFormulario();
+            }
+            else {
+                alert ("Error grabando en servidor");
+            }
+        } else {
+            console.log("Editando Vehiculo:")
+            if (confirm("Está a punto de editar el vehículo patente "+json.data.patente+"\n¿Desea continuar?")) {
+                if (actualizarEnServidor(json)) {
+                    load();
+                    limpiarCampos()
+                    ocultarFormulario();
+                }
+                else {
+                    alert ("Error actualizando en servidor");
+                }
+            } else {
+                cancelar();
+            }
         }
-        else {
-            alert ("Error grabando en servidor");
-        }
-        limpiarCampos()
-        ocultarFormulario();
     }
 }
 
 function editarPorPatente() {
-    console.log("Funcion Editar Posicion");
     let patenteAEditar = this.getAttribute("data-patente");
-    console.log(patenteAditar);
-    // let datos = this.getAttribute("datos").split(',');
-    // document.querySelector('#producto').value=datos[0];
-    // document.querySelector('#precio').value=datos[1];
-    // document.querySelector('#descripcion').value=datos[2];
-    // document.querySelector('#iva').value=datos[3];
+    let vehiculoAEditar = null;
+    
+    vehiculos.forEach(vehiculo => {
+        if (vehiculo.patente == patenteAEditar)
+        vehiculoAEditar = vehiculo;
+    });
+
+    if (vehiculoAEditar) {
+        editar = true;
+        mostrarFormulario();  
+        let tipo = "";
+        let capacidad = 0;
+        if (vehiculoAEditar["capacidadBaul"]) {
+            tipo = "auto";
+            capacidad = vehiculoAEditar["capacidadBaul"];
+        } else if (vehiculoAEditar["capacidadCarga"]) {
+            tipo = "camioneta";
+            capacidad = vehiculoAEditar["capacidadCarga"]
+        }
+    
+        inputTipo.value = tipo;
+        inputMarca.value = vehiculoAEditar.marca;
+        inputModelo.value = vehiculoAEditar.modelo;
+        inputAnio.value = vehiculoAEditar.anio;
+        inputPrecio.value = vehiculoAEditar.precio;
+        inputKilometraje.value = vehiculoAEditar.kilometraje;
+        inputCapacidad.value = capacidad;
+        inputPatente.value = vehiculoAEditar.patente;
+        inputPuertas.value = vehiculoAEditar.puertas;
+        inputAirbags.value = vehiculoAEditar.airbags;
+        inputFuncionaOk.value = vehiculoAEditar.funcionaOk;
+    } else {
+        alert ("No se encontró el vehículo. Verifique la patente e intente nuevamente");
+    }
 }
+
 function eliminarPorPatente() {
     let patenteAEliminar = this.getAttribute("data-patente");
-    eliminarDeServidor(patenteAEliminar);
+    if (confirm("Está a punto de eliminar el vehículo patente "+patenteAEliminar+"\n¿Desea continuar?")) {
+        eliminarDeServidor(patenteAEliminar);
+    }
 }
 
 function cancelar() {
@@ -157,11 +210,18 @@ function mostrarFormulario() {
     limpiarValidacion();
     fomulario.style.display = "flex";
     acciones.style.display = "none";
+    if (editar) {        
+        inputPatente.readOnly = true;
+    }
 }
 function ocultarFormulario() {
     fomulario.style.display = "none";
     acciones.style.display = "flex";
     limpiarValidacion();
+    if (editar) {        
+        inputPatente.readOnly = false;
+        editar = false;
+    }
 }
 function limpiarCampos() {
     inputTipo.value = "";
@@ -172,7 +232,6 @@ function limpiarCampos() {
     inputKilometraje.value = "";
     inputCapacidad.value = "";
     inputPatente.value = "";
-    inputPuertas.value = "";
     inputPuertas.value = "";
     inputAirbags.value = "";
     inputFuncionaOk.value = "";

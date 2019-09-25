@@ -60,11 +60,16 @@ export class VehiculosService {
         }
     }
 
-    public setVehiculo(vehiculoArg: any, id: number): string { 
-        let vehiculo: Vehiculo = this.crearVehiculo(vehiculoArg);
-        this.listaVehiculos[id] = vehiculo;
-        this.persistirLista();
-        return "ok";
+    public setVehiculo(vehiculoArg: any, patente: string): string { 
+        let posicion:number = this.buscarVehiculoPorPatente(patente);
+        if (posicion != -1) {
+            let vehiculo: Vehiculo = this.crearVehiculo(vehiculoArg);
+            this.listaVehiculos[posicion] = vehiculo;
+            this.persistirLista();
+            return "ok";
+        } else {
+            return null;
+        }
     }
 
     public deleteVehiculo(patente: string): string {
