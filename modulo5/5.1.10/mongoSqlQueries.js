@@ -17,5 +17,10 @@ mb.runSQLQuery(`
        
        -- SELECT * FROM SampleDataCollection LIMIT 2
        
+       SELECT * FROM SampleDataCollection
+       WHERE airedDate = 'July2017'
+       LIMIT 2
+
+       
 `).sort({_id:-1})
   .limit(100)

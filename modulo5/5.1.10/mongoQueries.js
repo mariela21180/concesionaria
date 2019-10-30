@@ -25,3 +25,4 @@
 
 // db.SampleDataCollection.find().limit(2)
 
+db.SampleDataCollection.find( {airedDate : "July2017"} ).limit(2)
