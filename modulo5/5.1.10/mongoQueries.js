@@ -35,3 +35,5 @@
 // db.SampleDataCollection.count()
 
 // db.SampleDataCollection.find({ airedDate : "August2017" }).count()
+
+// db.SampleDataCollection.findOne({ airedDate : "August2017" })

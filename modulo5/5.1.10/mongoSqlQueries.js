@@ -31,6 +31,11 @@ mb.runSQLQuery(`
        -- SELECT COUNT(*)
        -- FROM SampleDataCollection
        -- WHERE airedDate = 'August2017'
+       
+       -- SELECT TOP 1 *
+       -- FROM SampleDataCollection 
+       -- WHERE airedDate = 'August2017'
+
 
        
 `).sort({_id:-1})
