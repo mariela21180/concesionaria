@@ -25,4 +25,13 @@
 
 // db.SampleDataCollection.find().limit(2)
 
-db.SampleDataCollection.find( {airedDate : "July2017"} ).limit(2)
+// db.SampleDataCollection.find( {airedDate : "July2017"} ).limit(2)
+
+// db.SampleDataCollection.find().skip(4)
+
+// db.SampleDataCollection.find( { directedBy : "Matt Shakman" } ).skip(1)
+// esto no se puede hacer en sql
+
+// db.SampleDataCollection.count()
+
+// db.SampleDataCollection.find({ airedDate : "August2017" }).count()

@@ -17,9 +17,20 @@ mb.runSQLQuery(`
        
        -- SELECT * FROM SampleDataCollection LIMIT 2
        
-       SELECT * FROM SampleDataCollection
-       WHERE airedDate = 'July2017'
-       LIMIT 2
+       -- SELECT * FROM SampleDataCollection
+       -- WHERE airedDate = 'July2017'
+       -- LIMIT 2
+
+       -- SELECT * FROM SampleDataCollection WHERE _id > 4
+       
+       -- SELECT * FROM SampleDataCollection 
+       -- WHERE directedBy = 'Matt Shakman'
+
+       -- SELECT COUNT(*) FROM SampleDataCollection
+       
+       -- SELECT COUNT(*)
+       -- FROM SampleDataCollection
+       -- WHERE airedDate = 'August2017'
 
        
 `).sort({_id:-1})
