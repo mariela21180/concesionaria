@@ -32,10 +32,10 @@ USE bd111mil;
 -- 3. Todos los clientes que hayan facturado mas de 450000 en total con iva de los productos,
 -- cuyo stock sea > 200
 -- tenga mas de 95 unidades vendidas
-select * from e01_cliente where nro_cliente in (
-	select nro_cliente from e01_factura where (total_con_iva > 450000) and nro_factura in (
-		select nro_factura from e01_detalle_factura where codigo_producto in (
-			select codigo_producto from e01_producto where stock > 200 
-		) and cantidad > 95
-	)
-)
+-- select * from e01_cliente where nro_cliente in (
+-- 	select nro_cliente from e01_factura where (total_con_iva > 450000) and nro_factura in (
+-- 		select nro_factura from e01_detalle_factura where codigo_producto in (
+-- 			select codigo_producto from e01_producto where stock > 200 
+-- 		) and cantidad > 95
+-- 	)
+-- )

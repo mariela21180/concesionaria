@@ -54,7 +54,7 @@ use bd111mil;
 -- end$$
 -- DELIMITER ;
 
--- update e01_detalle_factura d set d.cantidad = 10 where d.nro_factura = 4 and d.nro_item = 66;
+-- update e01_detalle_factura d set d.cantidad = 25 where d.nro_factura = 4 and d.nro_item = 66;
 
 
 
@@ -101,20 +101,54 @@ use bd111mil;
 
 
 -- 5) procedimiento con un cursor (que genere una tabla temporal con cada cliente que tenga una cantidad de un producto determinado)
-drop procedure if exists listar_productos_segun_cantidad;
-DELIMITER $$
-create procedure listar_productos_segun_cantidad (in v_producto integer, in v_cantidad float)
-begin
-	drop temporary table if exists productos_segun_cantidad;
-	create temporary table productos_segun_cantidad (
-		nro_cliente integer not null default 0,
-        nombre varchar(45),
-        apellido varchar(45),        
-        producto varchar(45),    
-        marca varchar(45),  
-        cantidad varchar(45)
-    );
-    
-end $$
-DELIMITER ;
+-- drop procedure if exists listar_productos_segun_cantidad;
+-- DELIMITER $$
+-- create procedure listar_productos_segun_cantidad (in param_producto integer, in param_cantidad float)
+-- begin
+-- 	declare v_nro_cliente integer default 0;
+-- 	declare v_nombre varchar(45) default 0;
+-- 	declare v_apellido varchar(45) default 0;        
+-- 	declare v_nro_factura integer default 0;     
+-- 	declare v_codigo_producto integer default 0;  
+-- 	declare v_cantidad float default 0;
+-- 	DECLARE fin INTEGER DEFAULT 0;
+--         
+-- 	declare cDetalleFactura cursor for select codigo_producto, cantidad, nro_factura from e01_detalle_factura;
+-- 	declare cFacturas cursor for select nro_cliente from e01_factura where nro_factura=v_nro_factura;
+-- 	declare cClientes cursor for select nombre, apellido from e01_cliente where nro_cliente=v_nro_cliente;
+-- 	DECLARE CONTINUE HANDLER FOR NOT FOUND SET fin=1;
 
+-- 	drop temporary table if exists productos_segun_cantidad;
+-- 	create temporary table productos_segun_cantidad (
+-- 		nro_cliente integer not null default 0,
+--         nombre varchar(45),
+--         apellido varchar(45),   
+-- 		codigo_producto integer,
+--         cantidad float
+--     );
+--     
+--     open cDetalleFactura; 
+-- 	  get_detalle_producto: LOOP
+-- 		FETCH cDetalleFactura INTO v_codigo_producto,v_cantidad,v_nro_factura;
+-- 		IF fin = 1 THEN
+-- 		   LEAVE get_detalle_producto;
+-- 		END IF;
+-- 		open cFacturas;
+-- 			FETCH cFacturas INTO v_nro_cliente;            
+-- 		close cFacturas;
+-- 		open cClientes;
+-- 			FETCH cClientes INTO v_nombre, v_apellido;            
+-- 		close cClientes;
+--         
+--         if ((v_codigo_producto = param_producto) and (v_cantidad = param_cantidad)) then
+-- 			insert into productos_segun_cantidad (nro_cliente, nombre, apellido, codigo_producto, cantidad) values (v_nro_cliente, v_nombre, v_apellido, v_codigo_producto, v_cantidad);
+--         end if;
+-- 	  END LOOP get_detalle_producto;
+--   CLOSE cDetalleFactura;
+
+--     
+-- end $$
+-- DELIMITER ;
+
+call listar_productos_segun_cantidad(1, 72);
+select * from productos_segun_cantidad;

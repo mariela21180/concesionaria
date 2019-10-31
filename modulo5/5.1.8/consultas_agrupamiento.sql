@@ -82,9 +82,9 @@ use bd111mil;
 -- where f.nro_factura is null
 
 -- 8. Productos facturadios por cada cliente
-select c.nombre, c.apellido, count(distinct (d.codigo_producto)) productos_distintos, count(d.codigo_producto) productos_totales, sum(d.cantidad) total_ventas
-from e01_cliente c 
-inner join e01_factura f on f.nro_cliente = c.nro_cliente
-inner join e01_detalle_factura d on d.nro_factura = f.nro_factura
-group by c.nro_cliente
-order by total_ventas desc limit 10
+-- select c.nombre, c.apellido, count(distinct (d.codigo_producto)) productos_distintos, count(d.codigo_producto) productos_totales, sum(d.cantidad) total_ventas
+-- from e01_cliente c 
+-- inner join e01_factura f on f.nro_cliente = c.nro_cliente
+-- inner join e01_detalle_factura d on d.nro_factura = f.nro_factura
+-- group by c.nro_cliente
+-- order by total_ventas desc limit 10

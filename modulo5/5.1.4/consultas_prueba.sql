@@ -25,7 +25,7 @@ use bd111mil;
 -- order by precio;
 
 -- select * from e01_producto
--- where stock between 60 y 100
+-- where stock between 60 and 100
 -- order by stock;
 
 -- select * from e01_cliente
@@ -82,5 +82,5 @@ use bd111mil;
 
 -- 15) Total facturado al cliente 8 con y sin iva
 -- SELECT * FROM e01_producto where codigo_producto = 44;
-SELECT sum(total_sin_iva) as Total_sin_IVA,sum(total_con_iva) as Total_con_IVA,((sum(total_con_iva)-sum(total_sin_iva))/sum(total_sin_iva)) as IVA FROM e01_factura where nro_cliente = 8;
+-- SELECT sum(total_sin_iva) as Total_sin_IVA,sum(total_con_iva) as Total_con_IVA,((sum(total_con_iva)-sum(total_sin_iva))/sum(total_sin_iva)) as IVA FROM e01_factura where nro_cliente = 8;
 
