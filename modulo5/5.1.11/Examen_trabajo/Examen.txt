@@ -1,0 +1,45 @@
+Examen:
+
+--------------------------MySQL
+Modelo de datos:
+Hacer el siguiente modelo de datos:
+CURSO
+ - Establecer un modelo E-R para un curso con las siguientes tablas
+ 	--> Estudiantes
+ 	--> Clases
+ 	--> Profesores
+	--> Matrícula
+	--> Escuela
+	--> ciudad
+
+Los estudiantes pueden asistir a muchas clases de una misma escuela
+Cada clase puede ser equivalente en diferentes escuelas
+Un mismo profesor tiene asignadas muchas clases y en diferentes escuelas
+Un estudiante se matricula en las clases de una misma escuela
+Cada estudiante puede tener más de una dirección
+Cada Profesor puede tener más de una dirección
+Cada estudiante tiene que tener una asistencia en una clase
+
+
+SQL:
+ - SQL Generar una vista con los salario promedio, minimo y maximo de cada Title (de la base empleados)
+ - SQL con jerarquia recursivo (Jerarquia_Recursivo.sql)
+ - SQL generando instrucciones que metan fechas en el medio y generen una SCD y muestren con una vista (Rangos_Fechas.sql)
+
+Triggers: (Base de datos "Empleados")
+ - Generar una tabla nueva con los salarios acumulados (Salarios_Anuales <emp_no, anutal_total>)
+	-->crear un trigger en la tabla salario sobre el campo salary, cuando cambie y se modifique el valor en una fecha dada (ojo!!! hay que buscar el registro entre fechas)
+
+Cursores y Funciones: (Cursor_funcion.SQL)
+Registrar las puntuaciones obtenidas en un juego, este juego consistirá en una prueba que debemos realizar en el menor tiempo posible, 
+con una sola pierna y con obstáculos, y tenemos tres tipos de falta, uno es apoyar la pierna levantada, otra es chocar con un obstáculo, y la última de acuerdo a la posición obtenida. 
+Al final de la prueba se asignarán los puntos y se almacenarán en la misma tabla, para no tener que calcularlos cada vez.
+Se desea conocer la puntuación anterior y la siguiente (si es que existan) y establecer un promedio si la penalización actual es menor al promedio de las 2. 
+Crear una función que asigne las puntuaciones a cada uno de los corredores con una fórmula. 
+
+-------------------------MongoDB
+Hacer 3 consultas básicas (pasar colecciones con jerarquia)
+	--> un count
+	--> un limit
+	--> un order by
+Hacer un join entre 2 tablas (pasar colecciones de tablas)
