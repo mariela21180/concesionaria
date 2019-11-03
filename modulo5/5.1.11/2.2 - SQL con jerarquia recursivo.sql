@@ -1,3 +1,5 @@
+-- SQL con jerarquia recursivo (Jerarquia_Recursivo.sql)
+
 -- drop schema if exists arbol;
 -- create schema arbol;
 use arbol;
@@ -48,13 +50,62 @@ use arbol;
 -- (11,10),
 -- (12,1);
 
+drop view if exists Resultado_esperado;
 delimiter $$
 create view Resultado_esperado (id_identidad, Entidad_descripcion, arbol, arbolid, lvl, es_hoja) as 
-	with recursive crearRama as (
-		select id_identidad, Entidad_descripcion, Entidad_descripcion arbol, Entidad_descripcion arbolid, id_identidad lvl, es_hoja from Entidad e
+	-- with recursive crearRama as (
+-- 		select id_identidad, Entidad_descripcion, Entidad_descripcion arbol, id_identidad arbolid, 0 lvl, es_hoja from Entidad e
+--         
+-- 	)
+-- 	select * from crearRama;
+    
+	-- with recursive cte (id_identidad, arbolid) as (
+-- 	  select     id_identidad,
+-- 				 cast(id_padre as char(200)) as arbolid
+-- 	  from       jerarquia
+-- 	  where      id_padre = (SELECT id_identidad from jerarquia where id_padre is null)
+-- 	  union all
+-- 	  select     j.id_identidad,
+-- 				 concat(arbolid, ',', id_padre)
+-- 	  from       jerarquia j
+-- 	  inner join cte
+-- 			  on j.id_padre = cte.id_identidad
+-- 	)
+-- 	select * from cte;
+    
+    	with recursive cte (id_identidad, arbol, arbolid) as (
+	  select     jer.id_identidad,
+				 cast(ent.Entidad_descripcion as char(20000)) as arbol,
+				 cast(jer.id_padre as char(20000)) as arbolid
+	  from       jerarquia jer
+      inner join entidad ent on jer.id_identidad = ent.id_identidad
+	  where      id_padre = (SELECT id_identidad from jerarquia where id_padre is null)
+	  union all
+	  select     j.id_identidad,
+				 concat(arbol, '|', e.Entidad_descripcion),
+				 concat(arbolid, ',', j.id_padre)
+	  from       jerarquia j
+      inner join entidad e on j.id_identidad = e.id_identidad
+	  inner join cte
+			  on j.id_padre = cte.id_identidad
 	)
-	select * from crearRama;
+	select * from cte;
 $$
 delimiter ;
 
-
+-- delimiter $$
+-- create procedure test()
+-- begin	
+-- 		declare v_id_identidad int default 0;
+-- 		declare v_Entidad_descripcion varchar(45) default 0;
+-- 		declare v_arbol varchar(45) default 0;
+-- 		declare v_arbolid varchar(45) default 0;
+-- 		declare v_lvl int default 0;
+-- 		declare v_es_hoja int default 0;
+--         DECLARE fin INTEGER DEFAULT 0;
+--         
+--         declare cEntidad cursor for select id_identidad, Entidad_descripcion, es_hoja from Entidad;
+--         declare cJerarquia cursor for select id_identidad, id_ipadre from Jerarquia;
+--         
+-- end$$
+-- delimiter ;
