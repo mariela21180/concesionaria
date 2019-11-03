@@ -1,5 +1,5 @@
-drop schema if exists arbol;
-create schema arbol;
+-- drop schema if exists arbol;
+-- create schema arbol;
 use arbol;
 
 -- drop table if exists Entidad;
@@ -49,12 +49,12 @@ use arbol;
 -- (12,1);
 
 delimiter $$
-create view Resultado_esperado (id_entidad, Entidad_descripcion, arbol, arbolid, lvl, es_hoja) as 
-select * from crearRama;
+create view Resultado_esperado (id_identidad, Entidad_descripcion, arbol, arbolid, lvl, es_hoja) as 
+	with recursive crearRama as (
+		select id_identidad, Entidad_descripcion, Entidad_descripcion arbol, Entidad_descripcion arbolid, id_identidad lvl, es_hoja from Entidad e
+	)
+	select * from crearRama;
 $$
 delimiter ;
 
-with recursive crearRama as (
-	select * from Entidad
-)
-select * from crearRama;
+
