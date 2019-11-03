@@ -5,11 +5,11 @@
 -- Generar un árbol con todos los niveles separados por pipes "|"
 
 -- Resultado esperado:
--- id_entidad, Entidad_descripcion, arbol, arbolid, lvl, es_hoja
--- 12,Entidad 12,Entidad 1|Entidad 12,1|12,2,1
--- 11,Entidad 11,Entidad 1|Entidad 4|Entidad 9|Entidad 10|Entidad 11,1|4|9|10|11,5,1
--- 11,Entidad 11,Entidad 1|Entidad 4|Entidad 6|Entidad 7|Entidad 10|Entidad 11,1|4|6|7|10|11,6,1
--- 11,Entidad 11,Entidad 1|Entidad 2|Entidad 3|Entidad 5|Entidad 8|Entidad 9|Entidad 10|Entidad 11,1|2|3|5|8|9|10|11,8,1
+-- id_entidad, 	Entidad_descripcion, 	arbol, 																									arbolid, 			lvl, 	es_hoja
+-- 12,			Entidad 12,				Entidad 1|Entidad 12,																					1|12,				2,		1
+-- 11,			Entidad 11,				Entidad 1|Entidad 4|Entidad 9|Entidad 10|Entidad 11,													1|4|9|10|11,		5,		1
+-- 11,			Entidad 11,				Entidad 1|Entidad 4|Entidad 6|Entidad 7|Entidad 10|Entidad 11,											1|4|6|7|10|11,		6,		1
+-- 11,			Entidad 11,				Entidad 1|Entidad 2|Entidad 3|Entidad 5|Entidad 8|Entidad 9|Entidad 10|Entidad 11,						1|2|3|5|8|9|10|11,	8,		1
 
 
 insert into entidad values
