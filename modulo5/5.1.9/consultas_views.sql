@@ -1,5 +1,97 @@
 use bd111mil;
 
+
+-- 5.1.9.2
+-- _______________________________________________________________________
+-- create database  if not exists repaso; 
+-- use repaso;
+
+-- drop table if exists envio;
+-- drop table if exists articulo;
+-- drop table if exists proveedor;
+
+-- create table if not exists proveedor (
+-- id_proveedor int,
+-- nombre varchar(45),
+-- rubro varchar(45),
+-- ciudad varchar(45),
+-- primary key (id_proveedor)
+-- );
+
+-- create table if not exists articulo (
+-- id_articulo int,
+-- descripcion varchar(45),
+-- peso numeric,
+-- ciudad varchar(45),
+-- primary key (id_articulo)
+-- );
+
+-- create table if not exists envio (
+-- cantidad numeric,
+-- id_proveedor int,
+-- id_articulo int,
+-- constraint id_envio_articulo foreign key (id_articulo) references articulo(id_articulo) on update no action on delete no action,
+-- constraint id_envio_proveedor foreign key (id_proveedor) references proveedor(id_proveedor) on update no action on delete no action
+-- );
+
+-- insert into `articulo` value(1,'a',50,'Tandil');
+-- insert into `articulo` value(2,'b',70,'Azul');
+-- insert into `articulo` value(3,'c',90,'Olavarria');
+-- insert into `articulo` value(4,'d',110,'Tres Arroyos');
+-- insert into `articulo` value(5,'e',130,'Bahia Blanca');
+-- insert into `articulo` value(6,'f',150,'Buenos Aires');
+
+
+-- insert into `proveedor` value(1,'x','Golosinas','Tandil');
+-- insert into `proveedor` value(2,'y','Carniceria','Azul');
+-- insert into `proveedor` value(3,'z','Verduleria','Olavarria');
+
+-- insert into `envio` value(200,1,1);
+-- insert into `envio` value(500,2,1);
+-- insert into `envio` value(1000,3,2);
+-- insert into `envio` value(5,1,3);
+-- insert into `envio` value(600,2,5);
+-- insert into `envio` value(700,3,4);
+-- insert into `envio` value(80,1,6);
+-- insert into `envio` value(80,1,3);
+-- insert into `envio` value(5,1,3);
+
+-- 5.1.9.2.1
+-- _______________________________________________________________________
+-- drop view if exists ENVIOS500;
+-- create view ENVIOS500 as 
+-- select * from envio e where e.cantidad > 500;
+
+-- 5.1.9.2.2
+-- _______________________________________________________________________
+-- drop view if exists PRODUCTOS_MAS_PEDIDOS;
+-- create view PRODUCTOS_MAS_PEDIDOS as
+-- select distinct e.id_articulo, a.descripcion, a.peso, a.ciudad from ENVIOS500 e 
+-- join articulo a on e.id_articulo = a.id_articulo;
+
+-- 5.1.9.2.3
+-- _______________________________________________________________________
+-- drop view if exists ENVIOS_PROV;
+-- create view ENVIOS_PROV as 
+-- select e.id_proveedor, sum(e.cantidad) 
+-- from envio e
+-- group by e.id_proveedor;
+
+-- 5.1.9.2.4
+-- _______________________________________________________________________
+-- drop view if exists DETALLE_ENVIOS;
+-- create view DETALLE_ENVIOS as 
+-- select a.descripcion Producto, a.peso Peso, p.nombre Proveedor, e.cantidad Cantidad
+-- from ENVIOS500 e
+-- join proveedor p on e.id_proveedor = p.id_proveedor
+-- join articulo a on a.id_articulo = e.id_articulo;
+
+
+
+-- Ejercicios de Clase
+-- _______________________________________________________________________
+
+
 -- 1) Vista (con todas las tablas)
 
 -- create view telefonos_de_clientes (nro_cliente, apellido, nombre, codigo_area, nro_telefono) as 
