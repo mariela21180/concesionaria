@@ -1,0 +1,23 @@
+mongoimport -d Northwind -c categories --type csv --file C:\Users\guillermo.islas\Desktop\Desktop_Dirs\111-CFP\Realogy\MongoDB\northwind-mongo-master\categories.csv --headerline
+
+mongoimport -d Northwind -c customers --type csv --file C:\Users\guillermo.islas\Desktop\Desktop_Dirs\111-CFP\Realogy\MongoDB\northwind-mongo-master\customers.csv --headerline
+
+mongoimport -d Northwind -c employee-territories --type csv --file C:\Users\guillermo.islas\Desktop\Desktop_Dirs\111-CFP\Realogy\MongoDB\northwind-mongo-master\employee-territories.csv --headerline
+
+mongoimport -d Northwind -c employees --type csv --file C:\Users\guillermo.islas\Desktop\Desktop_Dirs\111-CFP\Realogy\MongoDB\northwind-mongo-master\employees.csv --headerline
+
+mongoimport -d Northwind -c northwind --type csv --file C:\Users\guillermo.islas\Desktop\Desktop_Dirs\111-CFP\Realogy\MongoDB\northwind-mongo-master\northwind.csv --headerline
+
+mongoimport -d Northwind -c order-details --type csv --file C:\Users\guillermo.islas\Desktop\Desktop_Dirs\111-CFP\Realogy\MongoDB\northwind-mongo-master\order-details.csv --headerline
+
+mongoimport -d Northwind -c orders --type csv --file C:\Users\guillermo.islas\Desktop\Desktop_Dirs\111-CFP\Realogy\MongoDB\northwind-mongo-master\orders.csv --headerline
+
+mongoimport -d Northwind -c products --type csv --file C:\Users\guillermo.islas\Desktop\Desktop_Dirs\111-CFP\Realogy\MongoDB\northwind-mongo-master\products.csv --headerline
+
+mongoimport -d Northwind -c regions --type csv --file C:\Users\guillermo.islas\Desktop\Desktop_Dirs\111-CFP\Realogy\MongoDB\northwind-mongo-master\regions.csv --headerline
+
+mongoimport -d Northwind -c shippers --type csv --file C:\Users\guillermo.islas\Desktop\Desktop_Dirs\111-CFP\Realogy\MongoDB\northwind-mongo-master\shippers.csv --headerline
+
+mongoimport -d Northwind -c suppliers --type csv --file C:\Users\guillermo.islas\Desktop\Desktop_Dirs\111-CFP\Realogy\MongoDB\northwind-mongo-master\suppliers.csv --headerline
+
+mongoimport -d Northwind -c territories --type csv --file C:\Users\guillermo.islas\Desktop\Desktop_Dirs\111-CFP\Realogy\MongoDB\northwind-mongo-master\territories.csv --headerline
