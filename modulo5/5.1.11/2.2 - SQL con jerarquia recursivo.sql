@@ -76,7 +76,7 @@ create view Resultado_esperado (id_identidad, Entidad_descripcion, arbol, arboli
 	with recursive cte (id_identidad, arbol, arbolid, lvl, es_hoja) as (
 	  select     jer.id_identidad,
 				 cast(ent.Entidad_descripcion as char(20000)) as arbol,
-				 cast(jer.id_padre as char(20000)) as arbolid,
+				 cast(jer.id_identidad as char(20000)) as arbolid,
                  1 as lvl,
                  ent.es_hoja
 	  from       jerarquia jer
@@ -85,7 +85,7 @@ create view Resultado_esperado (id_identidad, Entidad_descripcion, arbol, arboli
 	  union all
 	  select     j.id_identidad,
 				 concat(arbol, '|', e.Entidad_descripcion),
-				 concat(arbolid, ',', j.id_padre),
+				 concat(arbolid, ',', j.id_identidad),
                  lvl + 1,
                  e.es_hoja
 	  from       jerarquia j
