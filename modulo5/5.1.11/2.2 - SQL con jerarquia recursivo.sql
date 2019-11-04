@@ -93,7 +93,9 @@ create view Resultado_esperado (id_identidad, Entidad_descripcion, arbol, arboli
 	  inner join cte
 			  on j.id_padre = cte.id_identidad
 	)
-	select * from cte;
+	select * from cte
+    where cte.es_hoja = 1
+    order by lvl asc;
 $$
 delimiter ;
 
