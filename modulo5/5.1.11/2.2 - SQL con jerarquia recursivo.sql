@@ -67,7 +67,7 @@ create view Resultado_esperado (id_identidad, Entidad_descripcion, arbol, arboli
 	  select     j.id_identidad,
 				 e.Entidad_descripcion,
 				 concat(arbol, '|', e.Entidad_descripcion),
-				 concat(arbolid, ',', j.id_identidad),
+				 concat(arbolid, '|', j.id_identidad),
                  lvl + 1,
                  e.es_hoja
 	  from       jerarquia j
