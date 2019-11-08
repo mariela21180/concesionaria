@@ -1,19 +1,25 @@
 import { Injectable } from '@nestjs/common';
 import * as fs from 'fs';
-import Vehiculo from './vehiculo';
-import Auto from './auto';
-import Camioneta from './camioneta';
+import { Vehiculo } from './entities/vehiculo.entity';
+import { Auto } from './entities/auto';
+import { Camioneta } from './entities/camioneta';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { VehiculoDTO } from './dto/VehiculoDTO';
 
 @Injectable()
 export class VehiculosService {
     private listaVehiculos: Vehiculo[];
 
-    public constructor() {
+    public constructor(
+        @InjectRepository(Vehiculo) private readonly vehiculoRepository: Repository<Vehiculo>
+    ) {
+        
         this.loadVehiculos();
     }
 
-    public getVehiculos(): Vehiculo[] {
-        return this.listaVehiculos;
+    public async getVehiculos(): Promise<Vehiculo[]> {
+        return await this.vehiculoRepository.find();
     }
     public getVehiculo(patente: string): Vehiculo {
         let posicion:number = this.buscarVehiculoPorPatente(patente);
@@ -43,7 +49,7 @@ export class VehiculosService {
         return camionetas;
     }
 
-    public create(vehiculo: any) {
+    public create(vehiculo: VehiculoDTO) {
         // console.log("VEHICULO: ");
         // console.log("----------------");
         

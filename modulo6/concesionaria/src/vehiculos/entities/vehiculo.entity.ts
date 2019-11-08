@@ -1,15 +1,34 @@
-export default class Vehiculo {
+import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+
+@Entity('vehiculo')
+export class Vehiculo {
+    @PrimaryGeneratedColumn() id: number;
+    @Column()
+    protected tipo: string;
+    @Column()
     protected marca: string;
+    @Column()
     protected modelo: string;
+    @Column()
     protected anio: number;
-    protected patente: string;
+    @Column()
     protected precio: number;
-    protected puertas: number;
-    protected airbags: number;
+    @Column()
     protected kilometraje: number;
+    @Column()
+    protected capacidad: number;
+    @Column()
+    protected patente: string;
+    @Column()
+    protected puertas: number;
+    @Column({ nullable: true })
+    protected airbags: number;
+    @Column()
     protected funcionaOk: boolean;
 
     constructor (marca: string, modelo: string, anio: number, precio: number, kilometraje: number, patente?: string, puertas?: number, airbags?: number, funcionaOk?: boolean) {
+        this.tipo = null;
+        this.capacidad = 0;
         this.marca= marca;
         this.modelo = modelo;
         this.anio= anio;

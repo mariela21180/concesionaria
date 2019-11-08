@@ -5,8 +5,14 @@ import { VehiculosController } from './vehiculos.controller';
 import { VehiculosService } from './vehiculos.service';
 
 @Module({
-    imports: [TypeOrmModule.forFeature([Vehiculo])],
-    controllers: [VehiculosController],
-    providers: [VehiculosService],
+    imports: [TypeOrmModule.forFeature([
+        Vehiculo
+    ])],
+    controllers: [
+        VehiculosController
+    ],
+    providers: [
+        VehiculosService
+    ],
 })
 export class VehiculosModule {}

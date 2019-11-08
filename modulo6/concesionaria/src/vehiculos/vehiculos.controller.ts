@@ -1,15 +1,15 @@
 import { Controller, Get, Param, Post, Body, Put, Delete, HttpException, HttpStatus } from '@nestjs/common';
 import { VehiculosService } from './vehiculos.service';
-import Vehiculo from './vehiculo';
-import Camioneta from './camioneta';
-import Auto from './auto';
+import { Vehiculo } from './entities/vehiculo.entity';
+import { Camioneta } from './entities/camioneta';
+import { Auto } from './entities/auto';
 
 @Controller('vehiculos')
 export class VehiculosController {
     constructor(private vehiculosService: VehiculosService) {}
 
     @Get()
-    public getVehiculos(): Vehiculo[] {
+    public getVehiculos(): Promise<Vehiculo[]> {
         return this.vehiculosService.getVehiculos();
     }
     @Get('autos')

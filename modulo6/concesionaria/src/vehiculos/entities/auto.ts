@@ -1,6 +1,7 @@
-import Vehiculo from "./vehiculo";
+import { Vehiculo } from "./vehiculo.entity";
 
-export default class Auto extends Vehiculo{
+
+export class Auto extends Vehiculo{
     private capacidadBaul: number;
 
     constructor(marca: string, modelo: string, anio: number, precio: number, kilometraje: number, capacidadBaul: number, patente?: string, puertas?: number, airbags?: number, funcionaOk?: boolean) {
