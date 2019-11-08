@@ -3,8 +3,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
-import { VehiculosService } from './vehiculos/vehiculos.service';
-import { VehiculosController } from './vehiculos/vehiculos.controller';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { VehiculosModule } from './vehiculos/vehiculos.module';
 
 @Module({
   imports: [
@@ -12,8 +12,14 @@ import { VehiculosController } from './vehiculos/vehiculos.controller';
       rootPath: join(__dirname, '..',
       'client'),
     }),
+    TypeOrmModule.forRoot(),
+    VehiculosModule
   ],
-  controllers: [AppController, VehiculosController],
-  providers: [AppService, VehiculosService],
+  controllers: [
+    AppController
+  ],
+  providers: [
+    AppService
+  ],
 })
 export class AppModule {}
