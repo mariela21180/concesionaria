@@ -61,7 +61,7 @@ call fecha();
 
 INSERT INTO WSCHOOL VALUES (1000, '2019-06-12 10:00:00', 'School (Change 1,5)');
 INSERT INTO WSCHOOL VALUES (1010, '2019-05-12 10:00:00', 'School (Change 1)');
-INSERT INTO WSCHOOL VALUES (1010, '2019-06-12 10:00:00', 'School (Change 1,5)');
+INSERT INTO WSCHOOL VALUES (1010, '2019-07-12 10:00:00', 'School (Change 1,5)');
 
 -- Generar 3 vistas, 
 -- 2.3.1 - una SCHOOL_DR
