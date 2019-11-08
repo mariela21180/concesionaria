@@ -51,7 +51,12 @@ begin
 			set v_days_to = ( to_days(v_date_to) - to_days(concat(year(v_date_to),'-01-01'))  );                
 			set v_days_total = v_days_from + v_days_to;
 			
-			set v_dayly_salary = v_salary*12 / v_days_total;
+            if (v_days_total = 0) then 
+				set v_dayly_salary = v_salary * 12 / 365;
+			else 
+				set v_dayly_salary = v_salary * 12 / v_days_total;
+			end if;
+            
 			set v_current_annual_salary = (v_dayly_salary * v_days_from) + v_previous_salary;
 			
 			insert into salarios_anuales values (v_emp_no, v_year_from, v_current_annual_salary);
