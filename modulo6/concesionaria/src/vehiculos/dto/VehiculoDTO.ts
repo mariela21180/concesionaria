@@ -8,6 +8,6 @@ export class VehiculoDTO {
   readonly capacidad: number;
   readonly patente: string;
   readonly puertas: number;
-  readonly airbags: number;
+  readonly airbags?: number;
   readonly funcionaOk: boolean;
 }

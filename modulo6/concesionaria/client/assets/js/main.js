@@ -90,7 +90,7 @@ async function eliminarDeServidor(patente) {
     }
 }
 async function actualizarEnServidor(registro) {
-    let patente = registro.data.patente;
+    let patente = registro.patente;
     console.log(patente);
     let r = await fetch(`/vehiculos/${patente}`, { "method": "PUT", "headers": { "Content-Type": "application/json" }, "body": JSON.stringify(registro)});      
     return (r.ok);
@@ -133,7 +133,7 @@ function guardarVehiculo() {
             }
         } else {
             console.log("Editando Vehiculo:")
-            if (confirm("Está a punto de editar el vehículo patente "+json.data.patente+"\n¿Desea continuar?")) {
+            if (confirm("Está a punto de editar el vehículo patente "+json.patente+"\n¿Desea continuar?")) {
                 if (actualizarEnServidor(json)) {
                     load();
                     limpiarCampos()
@@ -160,24 +160,14 @@ function editarPorPatente() {
 
     if (vehiculoAEditar) {
         editar = true;
-        mostrarFormulario();  
-        let tipo = "";
-        let capacidad = 0;
-        if (vehiculoAEditar["capacidadBaul"]) {
-            tipo = "auto";
-            capacidad = vehiculoAEditar["capacidadBaul"];
-        } else if (vehiculoAEditar["capacidadCarga"]) {
-            tipo = "camioneta";
-            capacidad = vehiculoAEditar["capacidadCarga"]
-        }
-    
-        inputTipo.value = tipo;
+        mostrarFormulario();      
+        inputTipo.value = vehiculoAEditar.tipo;
         inputMarca.value = vehiculoAEditar.marca;
         inputModelo.value = vehiculoAEditar.modelo;
         inputAnio.value = vehiculoAEditar.anio;
         inputPrecio.value = vehiculoAEditar.precio;
         inputKilometraje.value = vehiculoAEditar.kilometraje;
-        inputCapacidad.value = capacidad;
+        inputCapacidad.value = vehiculoAEditar.capacidad;
         inputPatente.value = vehiculoAEditar.patente;
         inputPuertas.value = vehiculoAEditar.puertas;
         inputAirbags.value = vehiculoAEditar.airbags;
@@ -312,18 +302,16 @@ function validarCampos() {
 function crearJSONdeCampos() {
     return {
         "tipo": inputTipo.value,
-        "data": {
-            "marca": inputMarca.value,
-            "modelo": inputModelo.value,
-            "anio": inputAnio.value,
-            "precio": inputPrecio.value,
-            "kilometraje": inputKilometraje.value,
-            "capacidad": inputCapacidad.value,
-            "patente": inputPatente.value,
-            "puertas": inputPuertas.value,
-            "airbags": inputAirbags.value,
-            "funcionaOk": inputFuncionaOk.value
-        }
+        "capacidad": inputCapacidad.value,
+        "marca": inputMarca.value,
+        "modelo": inputModelo.value,
+        "anio": inputAnio.value,
+        "precio": inputPrecio.value,
+        "kilometraje": inputKilometraje.value,
+        "patente": inputPatente.value,
+        "puertas": inputPuertas.value,
+        "airbags": inputAirbags.value,
+        "funcionaOk": inputFuncionaOk.value
     }
 }
 
@@ -343,26 +331,17 @@ function mostrarTablaVehiculos() {
     btnsEliminar.forEach(a => {a.addEventListener("click", eliminarPorPatente)});
 }
 
-function filaTablaVehiculo(vehiculo) {    
-    let tipo = "";
+function filaTablaVehiculo(vehiculo) { 
     let html = "";
-    let capacidad = 0;
-    if (vehiculo["capacidadBaul"]) {
-        tipo = "Auto";
-        capacidad = vehiculo["capacidadBaul"];
-    } else if (vehiculo["capacidadCarga"]) {
-        tipo = "Camioneta";
-        capacidad = vehiculo["capacidadCarga"]
-    }
     html += `
     <tr>
-    <td>${tipo}</td>
+    <td class="text-capitalize">${vehiculo.tipo}</td>
     <td>${vehiculo.marca}</td>
     <td>${vehiculo.modelo}</td>
     <td>${vehiculo.anio}</td>
     <td>${vehiculo.precio}</td>
     <td>${vehiculo.kilometraje}</td>
-    <td>${capacidad}</td>
+    <td>${vehiculo.capacidad}</td>
     <td>${vehiculo.patente}</td>
     <td>${vehiculo.puertas}</td>
     <td>${vehiculo.airbags}</td>

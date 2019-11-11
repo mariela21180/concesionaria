@@ -1,8 +1,8 @@
 import { Controller, Get, Param, Post, Body, Put, Delete, HttpException, HttpStatus } from '@nestjs/common';
-import { VehiculosService } from './vehiculos.service';
-import { Vehiculo } from './entities/vehiculo.entity';
-import { Camioneta } from './entities/camioneta';
-import { Auto } from './entities/auto';
+import { VehiculosService } from '../services/vehiculos.service';
+import { Vehiculo } from '../entities/vehiculo.entity';
+import { Camioneta } from '../entities/camioneta';
+import { Auto } from '../entities/auto';
 
 @Controller('vehiculos')
 export class VehiculosController {
@@ -35,20 +35,19 @@ export class VehiculosController {
     
     // Ejemplo Body
     // {
-    //     "tipo": "camioneta",
-    //     "data": {
-    //         "marca": "Peugeot",
-    //         "modelo": "Partner",
-    //         "anio": 2018,
-    //         "precio": 250000,
-    //         "kilometraje": 10000,
-    //         "capacidad": 4087,
-    //         "patente": "WEP123",
-    //         "puertas": 5,
-    //         "airbags": 4,
-    //         "funcionaOk": true
-    //     }
-    // } 
+    //     "tipo": "auto",
+    //     "capacidad": 534,
+    //     "marca": "Renault",
+    //     "modelo": "12",
+    //     "anio": 1980,
+    //     "precio": 50000,
+    //     "kilometraje": 250000,
+    //     "patente": "UST182",
+    //     "puertas": 4,
+    //     "airbags": null,
+    //     "funcionaOk": true,
+    //     "id": 1
+    // },
 
     @Post()
     public create(@Body() vehiculo: any): string {

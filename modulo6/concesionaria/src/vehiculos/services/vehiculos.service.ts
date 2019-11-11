@@ -1,11 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import * as fs from 'fs';
-import { Vehiculo } from './entities/vehiculo.entity';
-import { Auto } from './entities/auto';
-import { Camioneta } from './entities/camioneta';
+import { Vehiculo } from '../entities/vehiculo.entity';
+import { Auto } from '../entities/auto';
+import { Camioneta } from '../entities/camioneta';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { VehiculoDTO } from './dto/VehiculoDTO';
+import { VehiculoDTO } from '../dto/VehiculoDTO';
 
 @Injectable()
 export class VehiculosService {
@@ -14,8 +14,6 @@ export class VehiculosService {
     public constructor(
         @InjectRepository(Vehiculo) private readonly vehiculoRepository: Repository<Vehiculo>
     ) {
-        
-        this.loadVehiculos();
     }
 
     public async getVehiculos(): Promise<Vehiculo[]> {
@@ -86,16 +84,6 @@ export class VehiculosService {
             return "ok";
         } else {
             return null;
-        }
-    }
-
-    private loadVehiculos(): void {
-        let archivo = fs.readFileSync('vehiculos.csv', 'utf8');
-        const elementos = archivo.split('\n').map(p => p.replace('\r', '')).map(p => p.split(',')); 
-        this.listaVehiculos = [];
-        for (let i = 0; i < elementos.length; i++) {
-            let vehiculo: Vehiculo = this.crearVehiculoDesdeArchivo(elementos[i]);
-            this.listaVehiculos.push(vehiculo);
         }
     }
 
