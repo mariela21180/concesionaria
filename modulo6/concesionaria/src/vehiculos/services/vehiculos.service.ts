@@ -14,6 +14,7 @@ export class VehiculosService {
     public constructor(
         @InjectRepository(Vehiculo) private readonly vehiculoRepository: Repository<Vehiculo>
     ) {
+        this.loadVehiculos();
     }
 
     public async getVehiculos(): Promise<Vehiculo[]> {
@@ -84,6 +85,18 @@ export class VehiculosService {
             return "ok";
         } else {
             return null;
+        }
+    }
+
+    private loadVehiculos(): void {
+        let elementos = [];
+        this.getVehiculos().then(function(result) {
+            elementos = result;
+         });
+        this.listaVehiculos = [];
+        for (let i = 0; i < elementos.length; i++) {
+            let vehiculo: Vehiculo = this.crearVehiculoDesdeArchivo(elementos[i]);
+            this.listaVehiculos.push(vehiculo);
         }
     }
 
@@ -257,29 +270,21 @@ export class VehiculosService {
         return vehiculo;
     }
 
-    private crearVehiculoDesdeArchivo(vehiculoArg: any): Vehiculo {
+    private crearVehiculoDesdeArchivo(vehiculoArg: VehiculoDTO): Vehiculo {
         let vehiculo: Vehiculo;  
-        let funcionaOk: boolean;
-        if (vehiculoArg[10] === "true") {
-            funcionaOk = true;
-        } else if (vehiculoArg[10] === "false") {
-            funcionaOk = false;
-        }
         // console.log(vehiculoArg); 
         let vehiculoJson = {
             "tipo": vehiculoArg[0],
-            "data": {
-                "marca": vehiculoArg[1], 
-                "modelo": vehiculoArg[2],
-                "anio": parseInt(vehiculoArg[3]),
-                "precio": parseInt(vehiculoArg[4]),
-                "kilometraje": parseInt(vehiculoArg[5]),
-                "capacidad": parseInt(vehiculoArg[6]),
-                "patente": vehiculoArg[7],
-                "puertas": parseInt(vehiculoArg[8]),
-                "airbags": parseInt(vehiculoArg[9]),
-                "funcionaOk": funcionaOk, 
-            }  
+            "capacidad": parseInt(vehiculoArg[6]),
+            "marca": vehiculoArg[1], 
+            "modelo": vehiculoArg[2],
+            "anio": parseInt(vehiculoArg[3]),
+            "precio": parseInt(vehiculoArg[4]),
+            "kilometraje": parseInt(vehiculoArg[5]),
+            "patente": vehiculoArg[7],
+            "puertas": parseInt(vehiculoArg[8]),
+            "airbags": parseInt(vehiculoArg[9]),
+            "funcionaOk": vehiculoArg[10], 
         }
         vehiculo = this.crearVehiculo(vehiculoJson); 
 
