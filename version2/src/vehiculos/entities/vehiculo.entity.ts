@@ -4,7 +4,7 @@ import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 export class Vehiculo {
     @PrimaryGeneratedColumn() id: number;
     @Column()
-    protected tipo: string;
+    public tipo: string;
     @Column()
     protected marca: string;
     @Column()
