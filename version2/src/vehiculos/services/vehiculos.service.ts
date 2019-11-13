@@ -59,8 +59,8 @@ export class VehiculosService {
         } else {
             let vehiculoNuevo: Vehiculo = this.crearVehiculo(vehiculo);   
             // console.log(vehiculoNuevo);         
-            this.listaVehiculos.push(vehiculoNuevo);            
-            this.persistirLista();
+            this.listaVehiculos.push(vehiculoNuevo);     
+            this.vehiculoRepository.save(vehiculoNuevo);    
             return "ok";
         }
     }
@@ -70,6 +70,7 @@ export class VehiculosService {
         if (posicion != -1) {
             let vehiculo: Vehiculo = this.crearVehiculo(vehiculoArg);
             this.listaVehiculos[posicion] = vehiculo;
+            
             this.persistirLista();
             return "ok";
         } else {
@@ -102,7 +103,7 @@ export class VehiculosService {
     }
 
     private persistirLista() {
-        fs.writeFileSync('vehiculos.csv', '', 'utf8');
+        // fs.writeFileSync('vehiculos.csv', '', 'utf8');
         // for (let i = 0; i < this.listaVehiculos.length; i++) {
         //     const vehiculo = this.listaVehiculos[i];
         //     let tipoVehiculo: string = vehiculo.tipo; 
