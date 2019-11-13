@@ -1,3 +1,0 @@
-12,Chicles Beldent,15,100
-54,Galletitas Bagley,60,50
-73,Helado Frigor,25,30

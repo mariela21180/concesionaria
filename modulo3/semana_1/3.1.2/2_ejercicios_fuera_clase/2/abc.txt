@@ -1,3 +1,0 @@
-1,azul
-2,blanco
-3,verde
