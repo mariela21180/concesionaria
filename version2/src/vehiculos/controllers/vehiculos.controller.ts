@@ -55,7 +55,7 @@ export class VehiculosController {
     }
 
     @Put(':patente')
-    public updateVehiculo(@Body() vehiculo: any, @Param('patente') patente): string {
+    public updateVehiculo(@Body() vehiculo: any, @Param('patente') patente) {
         return this.vehiculosService.setVehiculo(vehiculo, patente);
     }
 

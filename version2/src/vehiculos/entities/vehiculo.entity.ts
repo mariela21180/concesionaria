@@ -52,6 +52,26 @@ export class Vehiculo {
         this.funcionaOk = funcionaOk;
     }
     
+    public setTipo(tipo: string): void {
+        this.tipo = tipo;
+    }
+    
+    public setMarca(marca: string): void {
+        this.marca = marca;
+    }
+    
+    public setModelo(modelo: string): void {
+        this.modelo = modelo;
+    }
+
+    public setAnio(anio: number): void {
+        this.anio = anio;
+    }
+    
+    public setCapacidad(capacidad: number): void {
+        this.capacidad = capacidad;
+    }
+
     public setPatente(patente: string): void {
         this.patente = patente;
         
@@ -71,6 +91,10 @@ export class Vehiculo {
 
     public setAirbags(airbags: number): void {
         this.airbags = airbags;
+    }
+
+    public setFuncionaOk(funcionaOk: boolean): void {
+        this.funcionaOk = funcionaOk;
     }
     
     public getMarca(): string {

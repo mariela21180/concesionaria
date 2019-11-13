@@ -118,7 +118,7 @@ function mostrarVehiculo() {
     }
 }
 
-function guardarVehiculo() {
+async function guardarVehiculo() {
     if (validarCampos()) {
         let json = crearJSONdeCampos();
         if (!editar) {
@@ -134,14 +134,10 @@ function guardarVehiculo() {
         } else {
             console.log("Editando Vehiculo:")
             if (confirm("Está a punto de editar el vehículo patente "+json.patente+"\n¿Desea continuar?")) {
-                if (actualizarEnServidor(json)) {
-                    load();
-                    limpiarCampos()
-                    ocultarFormulario();
-                }
-                else {
-                    alert ("Error actualizando en servidor");
-                }
+                await actualizarEnServidor(json);
+                load();
+                limpiarCampos();
+                ocultarFormulario();
             } else {
                 cancelar();
             }

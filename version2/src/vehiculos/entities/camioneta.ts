@@ -5,8 +5,8 @@ export class Camioneta extends Vehiculo{
 
     constructor(marca: string, modelo: string, anio: number, precio: number, kilometraje: number, capacidadCarga: number, patente?: string, puertas?: number, airbags?: number, funcionaOk?: boolean) {
         super(marca, modelo, anio, precio, kilometraje, patente, puertas, airbags, funcionaOk);
-        super.tipo = "camioneta";
-        super.capacidad = capacidadCarga;
+        super.setTipo("camioneta");
+        super.setCapacidad(capacidadCarga);
     }
 
     public getCapacidadCarga(): number {

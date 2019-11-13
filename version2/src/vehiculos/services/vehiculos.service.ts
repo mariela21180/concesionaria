@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, HttpException } from '@nestjs/common';
 import * as fs from 'fs';
 import { Vehiculo } from '../entities/vehiculo.entity';
 import { Auto } from '../entities/auto';
@@ -65,16 +65,29 @@ export class VehiculosService {
         }
     }
 
-    public setVehiculo(vehiculoArg: VehiculoDTO, patente: string): string { 
-        let posicion:number = this.buscarVehiculoPorPatente(patente);
-        if (posicion != -1) {
-            let vehiculo: Vehiculo = this.crearVehiculo(vehiculoArg);
-            this.listaVehiculos[posicion] = vehiculo;
-            
-            this.persistirLista();
-            return "ok";
+    public async setVehiculo(vehiculoArg: any, patente: string) {
+        const vehiculoBD = await this.vehiculoRepository.findOne({
+            where: { 
+                "patente": patente
+            }
+        });
+        if (!vehiculoBD) { 
+            throw new HttpException('El Vehiculo no existe!', 404);
         } else {
-            return null;
+            vehiculoBD.setTipo(vehiculoArg.tipo);
+            vehiculoBD.setMarca(vehiculoArg.marca);
+            vehiculoBD.setModelo(vehiculoArg.modelo);
+            vehiculoBD.setAnio(parseInt(vehiculoArg.anio));
+            vehiculoBD.setPrecio(parseInt(vehiculoArg.precio));
+            vehiculoBD.setCapacidad(parseInt(vehiculoArg.capacidad));
+            vehiculoBD.setKilometraje(parseInt(vehiculoArg.kilometraje));
+            vehiculoBD.setPuertas(parseInt(vehiculoArg.puertas));
+            vehiculoBD.setAirbags(parseInt(vehiculoArg.airbags));
+            vehiculoBD.setFuncionaOk((/true/i).test(vehiculoArg.funcionaOk));
+            
+            this.vehiculoRepository.save(vehiculoBD);
+            
+            this.loadVehiculos();
         }
     }
 
