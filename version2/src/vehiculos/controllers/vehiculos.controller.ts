@@ -60,7 +60,7 @@ export class VehiculosController {
     }
 
     @Delete(':patente')
-    public deleteVehiculo(@Param('patente') patente): string {
+    public deleteVehiculo(@Param('patente') patente) {
         let r = this.vehiculosService.deleteVehiculo(patente);
         if (!r) {
             throw new HttpException({

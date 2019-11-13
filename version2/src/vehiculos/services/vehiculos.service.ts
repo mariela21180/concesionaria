@@ -91,14 +91,21 @@ export class VehiculosService {
         }
     }
 
-    public deleteVehiculo(patente: string): string {
-        let posicion:number = this.buscarVehiculoPorPatente(patente);
-        if (posicion != -1) {
-            this.listaVehiculos.splice(posicion,1);
-            this.persistirLista();
-            return "ok";
+    public async deleteVehiculo(patente: string) {
+        const vehiculoBD = await this.vehiculoRepository.findOne({
+            where: { 
+                "patente": patente
+            }
+        });
+        if (!vehiculoBD) { 
+            throw new HttpException('El Vehiculo no existe!', 404);
         } else {
-            return null;
+            let posicion:number = this.buscarVehiculoPorPatente(patente);
+            if (posicion != -1) {
+                this.listaVehiculos.splice(posicion,1);
+            }
+            this.vehiculoRepository.delete(vehiculoBD);
+            this.loadVehiculos();
         }
     }
 
